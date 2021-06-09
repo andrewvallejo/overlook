@@ -11,12 +11,6 @@ assignees: andrewvallejo
 
 Describe the big picture of your changes here to communicate with whomever what the issue is going to be about. Be sure to link other issues if they are relevant.
 
-## Types of changes
-
-- [ ] Bugfix (non-breaking change which fixes an issue)
-- [ ] Feature (non-breaking change which adds functionality)
-- [ ] Documentation Update (if none of the other choices apply)
-
 ## Checklist
 
 - [ ] Main Concern

@@ -1,7 +1,7 @@
 ---
 name: Issue Template
 about: This template covers all general issues and feature changes
-title: "[type/class] Issue Heading"
+title: "[type/tag] Issue"
 labels: ''
 assignees: andrewvallejo
 
@@ -16,15 +16,6 @@ Describe the big picture of your changes here to communicate with whomever what 
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Feature (non-breaking change which adds functionality)
 - [ ] Documentation Update (if none of the other choices apply)
-
-## What class of change
-
-- [ ] HTML
-- [ ] CSS
-- [ ] DOM
-- [ ] Class
-- [ ] Test
-- [ ] Other
 
 ## Checklist
 

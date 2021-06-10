@@ -1,7 +1,14 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
-
-body {
-  background: $primary-background;
-}
+// 01 Settings
+@import "01-settings/settings";
+// 02 Tools
+@import "02-tools/tools";
+// 03 Generic
+@import "03-generic/generic";
+// 04 Elements
+@import "04-elements/elements";
+// 05 Objects
+@import "05-objects/objects";
+// 06 Components
+@import "06-components/components";
+// 99 Utilities
+@import "07-utilities/utilities";

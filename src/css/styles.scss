@@ -1,14 +1,14 @@
 // 01 Settings
-@import "01-settings/settings";
+@import "./scss/01-settings/settings";
 // 02 Tools
-@import "02-tools/tools";
+@import "./scss/02-tools/tools";
 // 03 Generic
-@import "03-generic/generic";
+@import "./scss/03-generics/generic";
 // 04 Elements
-@import "04-elements/elements";
+@import "./scss/04-elements/elements";
 // 05 Objects
-@import "05-objects/objects";
+@import "./scss/05-objects/objects";
 // 06 Components
-@import "06-components/components";
+@import "./scss/06-components/components";
 // 99 Utilities
-@import "07-utilities/utilities";
+@import "./scss/07-utilities/utilities";

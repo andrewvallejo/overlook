@@ -1,6 +1,6 @@
 class Room {
-  constructor() {
-
+  constructor(room) {
+    this.number = room.number
   }
 }
 

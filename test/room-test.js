@@ -38,5 +38,8 @@ describe.only('Room', () => {
     expect(room1.numBeds).to.be.equal(1)
     expect(room2.numBeds).to.be.equal(2)
   })
-
+  it('should say how much the cost is per night', () => {
+    expect(room3.costPerNight).to.be.equal(358.4)
+    expect(room4.costPerNight).to.be.equal(429.44)
+  })
 })

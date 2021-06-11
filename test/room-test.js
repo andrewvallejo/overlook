@@ -11,7 +11,8 @@ describe.only('Room', () => {
     room4 = new Room(roomsData[3])
     room5 = new Room(roomsData[4])
   })
-  it('should be an instance of room', function() {
+  it('should be an instance of room', () => {
     expect(room1).to.be.an.instanceOf(Room)
   })
+
 })

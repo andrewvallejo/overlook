@@ -18,4 +18,10 @@ describe.only('Room', () => {
     expect(room3.number).to.be.equal(3)
     expect(room5.number).to.be.equal(5)
   })
+  it('should have all four room types', () => {
+    expect(room1.roomType).to.be.equal('residential suite')
+    expect(room2.roomType).to.be.equal('suite')
+    expect(room3.roomType).to.be.equal('junior suite')
+    expect(room5.roomType).to.be.equal('single room')
+  })
 })

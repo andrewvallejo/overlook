@@ -21,8 +21,21 @@ describe('User', () => {
   })
   it('should have an id that is not a string', () => {
     expect(guest4.id).to.not.be.a('string');
-    expect(guest3).to.be.a('number')
+    expect(guest3.id).to.be.a('number')
   })
+  it('should have a name', () => {
+    expect(guest2.name).to.be.equal('Rocio Schuster')
+    expect(guest5.name).to.be.equal('Rhiannon Little')
+  })
+  it('should have a first and last name', () => {
+    guest1 = guest1.name.split(' ')
+    guest4 = guest4.name.split(' ')
+    expect(guest1).to.be.deep.equal([ 'Leatha', 'Ullrich' ])
+    expect(guest4).to.be.deep.equal([ 'Kennedi', 'Emard' ])
+    expect(guest5.name).to
+  })
+
+
 })
 
 

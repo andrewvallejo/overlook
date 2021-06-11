@@ -37,7 +37,10 @@ describe('User', () => {
     expect(guest1.username).to.be.equal('ullrich1')
     expect(guest4.username).to.be.equal('emard4')
   })
-  
+  it('should a default password of overlook2021', () => {
+    expect(guest2.password).to.be.equal('overlook2021')
+    expect(guest5.password).to.be.equal('overlook2021')
+  })
 })
 
 

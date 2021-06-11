@@ -42,6 +42,3 @@ describe('User', () => {
     expect(guest5.password).to.be.equal('overlook2021')
   })
 })
-
-
-

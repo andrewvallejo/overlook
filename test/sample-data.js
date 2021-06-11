@@ -1,4 +1,5 @@
 export let roomsData, bookingsData, userData
+
 roomsData = 
  [
    {"number": 1,
@@ -40,6 +41,7 @@ roomsData =
      "numBeds": 2,
      "costPerNight": 340.17
    }]
+
 bookingsData = [ {
   "id": "5fwrgu4i7k55hl6sz",
   "userID": 9,
@@ -75,7 +77,9 @@ bookingsData = [ {
   "roomNumber": 12,
   "roomServiceCharges": []
 }]
+
 userData = [ {
+
   "id": 1,
   "name": "Leatha Ullrich"
 },

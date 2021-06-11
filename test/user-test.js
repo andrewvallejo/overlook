@@ -32,10 +32,12 @@ describe('User', () => {
     guest4 = guest4.name.split(' ')
     expect(guest1).to.be.deep.equal([ 'Leatha', 'Ullrich' ])
     expect(guest4).to.be.deep.equal([ 'Kennedi', 'Emard' ])
-    expect(guest5.name).to
   })
-
-
+  it('should have a username made from the lastname(lowercase) and id', () => {
+    expect(guest1.username).to.be.equal('ullrich1')
+    expect(guest4.username).to.be.equal('emard4')
+  })
+  
 })
 
 

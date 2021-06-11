@@ -19,6 +19,10 @@ describe('User', () => {
     expect(guest3.id).to.be.equal(3)
     expect(guest5.id).to.be.equal(5)
   })
+  it('should have an id that is not a string', () => {
+    expect(guest4.id).to.not.be.a('string');
+    expect(guest3).to.be.a('number')
+  })
 })
 
 

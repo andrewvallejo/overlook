@@ -14,5 +14,8 @@ describe.only('Room', () => {
   it('should be an instance of room', () => {
     expect(room1).to.be.an.instanceOf(Room)
   })
-
+  it('should have a room number', () => {
+    expect(room3.number).to.be.equal(3)
+    expect(room5.number).to.be.equal(5)
+  })
 })

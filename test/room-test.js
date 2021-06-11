@@ -28,9 +28,15 @@ describe.only('Room', () => {
     expect(room1.bidet).to.be.true 
     expect(room2.bidet).to.be.false 
   })
-  it('should have a different bed sizes', () => {
-    expect(room1.bedSize).to.be.equal('full')
-    expect(room1.bedSize).to.be.equal('queen')
-    expect(room1.bedSize).to.be.equal('king')
-    expect(room1.bedSize).to.be.equal('twin')
+  it('should have different bed sizes', () => {
+    expect(room2.bedSize).to.be.equal('full')
+    expect(room3.bedSize).to.be.equal('king')
+    expect(room4.bedSize).to.be.equal('queen')
+    expect(room5.bedSize).to.be.equal('twin')
   })
+  it('should have one or two beds', () => {
+    expect(room1.numBeds).to.be.equal(1)
+    expect(room2.numBeds).to.be.equal(2)
+  })
+
+})

@@ -37,7 +37,7 @@ roomsData =
      "number": 5,
      "roomType": "single room",
      "bidet": true,
-     "bedSize": "queen",
+     "bedSize": "twin",
      "numBeds": 2,
      "costPerNight": 340.17
    }]

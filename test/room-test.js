@@ -24,4 +24,8 @@ describe.only('Room', () => {
     expect(room3.roomType).to.be.equal('junior suite')
     expect(room5.roomType).to.be.equal('single room')
   })
+  it('should say if it has a bidet or not', () => {
+    expect(room1.bidet).to.be.true 
+    expect(room2.bidet).to.be.false 
+  })
 })

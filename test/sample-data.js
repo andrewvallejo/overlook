@@ -19,7 +19,7 @@ roomsData =
    },
    {
      "number": 3,
-     "roomType": "single room",
+     "roomType": "junior suite",
      "bidet": false,
      "bedSize": "king",
      "numBeds": 1,

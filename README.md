@@ -44,25 +44,25 @@ Insert gif or link to demo
 
 Clone the revere repo and appreciate its journey to making you feel _venerated._
 
-```
+```zsh
   git clone git@github.com:andrewvallejo/overlook.git
 ```
 
 The next part, my favorite part, `cd` into the directory and run
 
-```
+```zsh
 npm install
 ```
 
 Marvelous. `CD` out of there once able to break your gaze away. Then clone this
 
-```
+```zsh
 git clone git@github.com:turingschool-examples/overlook-api.git
 ```
 
 Once again, `CD` on in and when you feel delighted to, install the dependencies
 
-```
+```zsh
 npm install
 ```
 
@@ -72,19 +72,19 @@ See how easy we made that for you? This is a hotel you can trust with earnest.
 
 To view the project for all its majesty, `CD` into the Overlooks directory and run
 
-```
+```zsh
   npm start
 ```
 
 On a different terminal, `CD` into the Overlook API directory and run
 
-```
+```zsh
     npm start
 ```
 
 Are you ready? Click on the link to see your new home for night, you deserve it
 
-```
+```zsh
 http://localhost:8080/
 ```
 
@@ -94,7 +94,7 @@ Still not satsified? Don't worry, we believe in transpency. We have all our basi
 
 Feel free to a test within our directory to see we didn't cut any corners here at the Overlook.
 
-```
+```zsh
   npm run test
 ```
 
@@ -102,6 +102,7 @@ Feel free to a test within our directory to see we didn't cut any corners here a
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-## Authors
+## Created by Andrew Vallejo
 
-- [@andrewvallejo](https://www.github.com/andrewvallejo)
+- My [Github](https://www.github.com/andrewvallejo)
+- My [Linkdin](https://www.linkedin.com/in/andrewvallejo/)

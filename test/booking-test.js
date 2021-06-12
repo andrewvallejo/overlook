@@ -18,4 +18,8 @@ describe.only('booking', () => {
     expect(booking1.id).to.be.equal('5fwrgu4i7k55hl6sz')
     expect(booking3.id).to.be.equal('5fwrgu4i7k55hl6t6')
   })
+  it('should have an id with the 17 characters', () => {
+    expect(booking2.id).to.be.lengthOf(17)
+    expect(booking4.id).to.be.lengthOf(17)
+  })
 });

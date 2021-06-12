@@ -13,6 +13,15 @@ const instantiateRooms = () => {
   }, {})
 }
 
+let bookingCount = 0
+const instantiateBookings = () => {
+  return bookingsData.reduce((hotel, booking) => {
+    bookingCount++
+    const newBooking = new Booking(booking)
+    hotel[`booking${bookingCount}`] = newBooking
+    console.log(hotel)
+    return hotel
+  }, {})
+}
 
-
-const export {instantiateRooms as rooms, instantiateBookings as bookings}
+export {instantiateRooms as rooms, instantiateBookings as bookings}

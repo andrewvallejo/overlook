@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import Room from '../src/components/classes/Room'
 import { roomsData } from './sample-data'
 
-describe.only('Room', () => {
+describe('Room', () => {
   let room1, room2, room3, room4, room5;
   beforeEach(() => {
     room1 = new Room(roomsData[0])

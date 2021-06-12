@@ -19,7 +19,7 @@ roomsData =
    },
    {
      "number": 3,
-     "roomType": "single room",
+     "roomType": "junior suite",
      "bidet": false,
      "bedSize": "king",
      "numBeds": 1,
@@ -37,7 +37,7 @@ roomsData =
      "number": 5,
      "roomType": "single room",
      "bidet": true,
-     "bedSize": "queen",
+     "bedSize": "twin",
      "numBeds": 2,
      "costPerNight": 340.17
    }]

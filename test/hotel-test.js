@@ -24,5 +24,26 @@ describe.only('Booking', () => {
   it('should be an instantation of Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel)
   })
+  it('should have the a default date of 2000/12/25', () => {
+    expect(hotel.date).to.be.deep.equal('2000/12/25')
+  })
+  it('should be a default of an empty array for rooms', () => {
+    expect(hotel.rooms).to.be.deep.equal([])
+  })
+  it('should be a default of an empty array for rooms', () => {
+    expect(hotel.rooms).to.be.deep.equal([])
+  })
+  it('should be a default of an empty array for bookings', () => {
+    expect(hotel.bookings).to.be.deep.equal([])
+  })
+  it('should be a default of an empty array for rooms available today', () => {
+    expect(hotel.todaysAvailableRooms).to.be.deep.equal([])
+  })
+  it('should be a default of an empty array for rooms available today', () => {
+    expect(hotel.pendingBookings).to.be.deep.equal([])
+  })
+  it('should be a default of 0 for percentage of rooms available today', () => {
+    expect(hotel.todaysAvailability).to.be.deep.equal([])
+  })
 });
 

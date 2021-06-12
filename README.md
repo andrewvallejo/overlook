@@ -1,105 +1,107 @@
-# Webpack Starter Kit
+# Overlook
 
-## Clone This Repo
+An application commissioned by the Overlook Hotel. The app is tailored around the hotel's esteemed guests; delivering the bookings schedule of all of the hotel's most finest quarters. Never doubt that you'll find the room that you deserve, because at the Overlook, you are taken care of.
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Features
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+### The Guest
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+- Guest may book a hotel room
+- Guest may view any prior or future bookings
+- Guest may narrow down their search by date if the many rooms become exhausting
+- If guest feels awful looking at single rooms or junior suites, then they may view just the residental suite instead
+- Dare I say, if there is ever a mistake in availabilty then will be do our _**best**_ in our duty to make things right.
 
-## Setup
+### The Manager
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+- The managers will also get their own version of the application
+- They may see what all of the many rooms are available for the current date
+- They can see the influx of wealth of the current day
+- No math ever required to find out the percentage of available rooms for the current date
+- They can search any guest they desire, amongst their bookings and spendings
+- They can reserve a room for any guest
+- But as any good manager ought to, they can axe the guest bookings if they deserve it
 
-Then install the library dependencies. Run:
+## Tech Stack
 
-```bash
+**Languages:** HTML5, CSS, Sass, JavaScript
+
+**Server:** the Fetch API
+
+**Testing:** Mocha & Chai
+
+![javaScript](https://img.shields.io/github/languages/top/andrewvallejo/overlook)
+
+![pull requests](https://img.shields.io/github/issues-pr-closed/andrewvallejo/overlook)
+
+![accessibility](https://img.shields.io/wheelmap/a/26699541)
+
+## Demo
+
+Insert gif or link to demo
+
+## Installation
+
+Clone the revere repo and appreciate its journey to making you feel _venerated._
+
+```
+  git clone git@github.com:andrewvallejo/overlook.git
+```
+
+The next part, my favorite part, `cd` into the directory and run
+
+```
 npm install
 ```
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+Marvelous. `CD` out of there once able to break your gaze away. Then clone this
 
-## Where to Add Your Code
-
-### JavaScript
-
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
-
-**Create all of your feature code files in the `src` directory.**
-
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
-
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### CSS (SCSS/SASS)
-
-This project is setup to use SCSS/Sass files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
+```
+git clone git@github.com:turingschool-examples/overlook-api.git
 ```
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+Once again, `CD` on in and when you feel delighted to, install the dependencies
 
-```bash
-Project is running at http://localhost:8080/
+```
+npm install
 ```
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+See how easy we made that for you? This is a hotel you can trust with earnest.
 
----
+## Deployment
 
-## Test Files Organization
+To view the project for all its majesty, `CD` into the Overlooks directory and run
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
+```
+  npm start
 ```
 
-The test results will output to the terminal.
+On a different terminal, `CD` into the Overlook API directory and run
 
----
+```
+    npm start
+```
 
-## Linting Your Code
+Are you ready? Click on the link to see your new home for night, you deserve it
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
+```
+http://localhost:8080/
+```
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
+## Running Tests
 
-## Webpack?
+Still not satsified? Don't worry, we believe in transpency. We have all our basis covered, our next objective is gaining your trust.
 
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
+Feel free to a test within our directory to see we didn't cut any corners here at the Overlook.
 
-## Deploying to GitHub Pages
+```
+  npm run test
+```
 
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
+## Screenshots
 
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+## Authors
+
+- [@andrewvallejo](https://www.github.com/andrewvallejo)

@@ -26,4 +26,8 @@ describe.only('booking', () => {
     expect(booking1.userID).to.be.equal(9)
     expect(booking5.userID).to.be.equal(1)
   })
+  it('should have the date with in the order of 2000/12/31', () => {
+    expect(booking2.date).to.be.equal('2020/01/24')
+    expect(booking5.date).to.be.equal('2020/02/05')
+  })
 });

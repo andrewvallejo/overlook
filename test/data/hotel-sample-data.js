@@ -10,7 +10,6 @@ const instantiatedRooms = roomsData.reduce((hotel, room) => {
   return hotel
 }, {})
 
-
 let bookingCount = 0
 const instantiatedBookings = bookingsData.reduce((hotel, booking) => {
   bookingCount++
@@ -19,5 +18,26 @@ const instantiatedBookings = bookingsData.reduce((hotel, booking) => {
   return hotel
 }, {})
 
+const findDate = () => {
+  const today = new Date()
+  let dd = today.getDate()
+  let mm = today.getMonth() + 1
+  const yyyy = today.getFullYear()
+  if (dd < 10) {
+    dd = `0${dd}` 
+  } else if (mm < 10) {
+    (
+      mm = `0${mm}`
+    )
+  }  
+  return `${yyyy}/${mm}/${dd}`
+}    
 
-export {instantiatedRooms as rooms, instantiatedBookings as bookings}
+const todaysDate = findDate()
+
+
+export {
+  instantiatedRooms as rooms,
+  instantiatedBookings as bookings,
+  todaysDate as today
+}

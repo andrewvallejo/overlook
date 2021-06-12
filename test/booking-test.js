@@ -33,5 +33,10 @@ describe.only('booking', () => {
   it('should have a room number', () => {
     expect(booking3.roomNumber).to.be.equal(12)
     expect(booking4.roomNumber).to.be.equal(7)
-  }) 
+  })
+  it('should have an empty array as a default for room service charges',
+    () => {
+      expect(booking1.roomServiceCharges).to.be.deep.equal([])
+      expect(booking5.roomServiceCharges).to.be.deep.equal([])
+    }) 
 });

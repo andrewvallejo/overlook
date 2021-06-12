@@ -22,4 +22,8 @@ describe.only('booking', () => {
     expect(booking2.id).to.be.lengthOf(17)
     expect(booking4.id).to.be.lengthOf(17)
   })
+  it('should have the user ID of has booked the room', () => {
+    expect(booking1.userID).to.be.equal(9)
+    expect(booking5.userID).to.be.equal(1)
+  })
 });

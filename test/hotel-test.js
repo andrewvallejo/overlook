@@ -45,5 +45,17 @@ describe.only('Booking', () => {
   it('should be a default of 0 for percentage of rooms available today', () => {
     expect(hotel.todaysAvailability).to.be.deep.equal([])
   })
+  it('should be able to instaniate all of the rooms', () => {
+    expect(hotel.rooms).to.be.deep.equal([])
+    hotel.generateRooms()
+    expect(hotel.rooms).to.be.lengthOf(5)
+    expect(hotel.rooms).to.be.deep.equal(hotelRooms)
+  })
+  it('should be able to instaniate all of the bookings', () => {
+    expect(hotel.bookings).to.be.deep.equal([])
+    hotel.generateBookings()
+    expect(hotel.bookings).to.be.lengthOf(5)
+    expect(hotel.bookings).to.be.deep.equal(hotelBookings)
+  })
 });
 

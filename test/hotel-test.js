@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Hotel from '../src/components/classes/Hotel';
-import {rooms, bookings} from './data/hotel-sample-data'
+import {rooms, bookings, today} from './data/hotel-sample-data'
 
 describe.only('Booking', () => {
   let hotel

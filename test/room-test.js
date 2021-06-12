@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Room from '../src/components/classes/Room'
-import { roomsData } from './sample-data'
+import { roomsData } from './data/sample-data'
 
 describe('Room', () => {
   let room1, room2, room3, room4, room5;

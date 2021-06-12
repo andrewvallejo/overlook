@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Booking from '../src/components/classes/Booking';
-import { bookingsData } from './sample-data';
+import { bookingsData } from './data/sample-data';
 
 describe('booking', () => {
   let booking1, booking2, booking3, booking4, booking5;

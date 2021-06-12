@@ -30,4 +30,8 @@ describe.only('booking', () => {
     expect(booking2.date).to.be.equal('2020/01/24')
     expect(booking5.date).to.be.equal('2020/02/05')
   })
+  it('should have a room number', () => {
+    expect(booking3.roomNumber).to.be.equal(12)
+    expect(booking4.roomNumber).to.be.equal(7)
+  }) 
 });

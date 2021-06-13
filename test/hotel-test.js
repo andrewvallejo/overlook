@@ -1,13 +1,11 @@
 import { expect } from 'chai';
-import Hotel from '../src/components/classes/Hotel';
+import { Hotel} from '../src/components/classes/Hotel';
 import {rooms, bookings, today} from './data/hotel-sample-data'
 
 describe.only('Booking', () => {
-  let hotel
+  let hotel, hotelRooms, hotelBookings
   let room1, room2, room3, room4, room5
   let booking1, booking2, booking3, booking4, booking5
-  const hotelRooms = [room1, room2, room3, room4, room5]
-  const hotelBookings = [booking1, booking2, booking3, booking4, booking5]
   beforeEach(() => {
     room1 = rooms.room1
     room2 = rooms.room2
@@ -19,6 +17,8 @@ describe.only('Booking', () => {
     booking3 = bookings.book3
     booking4 = bookings.book4
     booking5 = bookings.book5
+    hotelRooms = [room1, room2, room3, room4, room5]
+    hotelBookings = [booking1, booking2, booking3, booking4, booking5]
     hotel = new Hotel()
   })
   it('should be an instantation of Hotel', () => {
@@ -42,9 +42,9 @@ describe.only('Booking', () => {
   it('should be a default of 0 for percentage of rooms available', () => {
     expect(hotel.availability).to.be.deep.equal(0)
   })
-  it.skip('should be able to instaniate all of the rooms', () => {
+  it('should be able to instaniate all of the rooms', () => {
     expect(hotel.rooms).to.be.deep.equal([])
-    hotel.generateRooms()
+    hotel.generateRooms(hotelRooms)
     expect(hotel.rooms).to.be.lengthOf(5)
     expect(hotel.rooms).to.be.deep.equal(hotelRooms)
   })

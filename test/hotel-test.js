@@ -89,5 +89,13 @@ describe.only('Booking', () => {
     expect(hotel.availableRooms).to.be.lengthOf(5)
     expect(hotel.availableRooms).to.be.equal(bookedRooms2)
   })
+  it('should be able to show percentage of booked rooms on date', () => {
+    hotel.selectDate('2043/01/01')
+    hotel.findAvailableRooms()
+    expect(hotel.availability).to.be.equal(40)
+    hotel.findAvailableRooms('2022/09/05')
+    hotel.findAvailableRooms()
+    expect(hotel.availability).to.be.equal(60)
+  })
 });
 

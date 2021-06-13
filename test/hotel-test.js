@@ -78,5 +78,16 @@ describe.only('Booking', () => {
     expect(hotel.availableRooms).to.be.lengthOf(5)
     expect(hotel.availableRooms).to.be.equal(hotelBookings)
   })
+  it('should be able to show all available rooms for a future date', () => {
+    expect(hotel.availability).to.be.lengthOf(0)
+    hotel.selectDate('2043/01/01')
+    hotel.findAvailableRooms()
+    expect(hotel.availableRooms).to.be.lengthOf(5)
+    expect(hotel.availableRooms).to.be.equal(bookedRooms1)
+    hotel.selectDate('2043/01/01')
+    hotel.findAvailableRooms('2022/09/05')
+    expect(hotel.availableRooms).to.be.lengthOf(5)
+    expect(hotel.availableRooms).to.be.equal(bookedRooms2)
+  })
 });
 

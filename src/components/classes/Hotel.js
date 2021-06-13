@@ -20,6 +20,15 @@ export class Hotel {
       this.bookings.push(new Booking(booking))
     })
   }
+  fetchCurrentDate(date) {
+    let dd = date.getDate()
+    let mm = date.getMonth() + 1
+    const yyyy = date.getFullYear()
+    dd < 10 ? dd = `0${dd}` : null
+    mm < 10 ? mm = `0${mm}` : null     
+    this.date = `${yyyy}/${mm}/${dd}`
+  }
+
 }
 
 

@@ -3,6 +3,7 @@ import { Hotel} from '../src/components/classes/Hotel';
 import {rooms, bookings, today} from './data/hotel-sample-data'
 
 describe.only('Booking', () => {
+  let bookedRooms1, bookedRooms2
   let hotel, hotelRooms, hotelBookings
   let room1, room2, room3, room4, room5
   let booking1, booking2, booking3, booking4, booking5
@@ -17,6 +18,8 @@ describe.only('Booking', () => {
     booking3 = bookings.booking3
     booking4 = bookings.booking4
     booking5 = bookings.booking5
+    bookedRooms1 = [booking2, booking3, booking4]
+    bookedRooms2 = [booking1, booking5]
     hotelRooms = [room1, room2, room3, room4, room5]
     hotelBookings = [booking1, booking2, booking3, booking4, booking5]
     hotel = new Hotel()
@@ -67,6 +70,13 @@ describe.only('Booking', () => {
   it('should not be able to update the date to a before today', () => {
     hotel.selectDate('2019/11/22')
     expect(hotel.date).to.be.equal(today)
+  })
+  it('should be be able show all available rooms for today', () => {
+    expect(hotel.availability).to.be.lengthOf(0)
+    hotel.selectDate(today)
+    hotel.findAvailableRooms()
+    expect(hotel.availableRooms).to.be.lengthOf(5)
+    expect(hotel.availableRooms).to.be.equal(hotelBookings)
   })
 });
 

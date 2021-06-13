@@ -10,6 +10,11 @@ export class Hotel {
     this.pendingBookings = []
     this.availability = 0
   }
+  generateRooms(rooms) {
+    rooms.forEach(room => {
+      this.rooms.push(new Room(room))
+    })
+  }
 }
 
 

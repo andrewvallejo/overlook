@@ -28,7 +28,15 @@ export class Hotel {
     mm < 10 ? mm = `0${mm}` : null     
     this.date = `${yyyy}/${mm}/${dd}`
   }
-
+  selectDate(date) {
+    if (new Date(date).valueOf() < new Date().valueOf()) {
+      const today = new Date()
+      this.fetchCurrentDate(today)
+    } else {
+      const futureDate = new Date(date)
+      this.fetchCurrentDate(futureDate)
+    } 
+  }
 }
 
 

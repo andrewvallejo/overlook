@@ -1,4 +1,4 @@
-// import Booking from './Booking'
+import Booking from './Booking'
 import Room from './Room'
 
 export class Hotel {
@@ -15,6 +15,14 @@ export class Hotel {
       this.rooms.push(new Room(room))
     })
   }
+  generateBookings(bookings) {
+    bookings.forEach(booking => {
+      this.bookings.push(new Booking(booking))
+    })
+  }
 }
+
+
+
 
 

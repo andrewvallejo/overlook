@@ -97,5 +97,17 @@ describe.only('Booking', () => {
     hotel.findAvailableRooms()
     expect(hotel.availability).to.be.equal(60)
   })
+  it('should be able to approve of any booking', () => {
+    hotel.selectDate('2043/01/01')
+    hotel.findAvailableRooms()
+    expect(hotel.availability).to.be.equal(40)
+    expect(hotel.pendingBookings).to.be.deep.equal([])
+    hotel.pendingBookings.push(booking1)
+    expect(hotel.pendingBookings).to.be.deep.equal([booking1])
+    hotel.approveBooking(booking1.id)
+    expect(hotel.availability).to.be.equal(20)
+    expect(hotel.bookings).to.be.lengthOf(4)
+    expect(hotel.pendingBookings).to.be.deep.equal([])
+  })
 });
 

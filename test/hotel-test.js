@@ -131,5 +131,13 @@ describe.only('Booking', () => {
     hotel.filterRooms('suite')
     expect(hotel.availableRooms).to.be.deep.equal([booking2])
   })
+  it('should be able to show all rooms again', () => {
+    hotel.selectDate(['2099/10/31'])
+    hotel.findAvailableRooms()
+    hotel.filterRooms('single room')
+    expect(hotel.availableRooms).to.be.deep.equal(singleRooms)
+    hotel.filterRooms('show all')
+    expect(hotel.availableRooms).to.be.equal(hotelRooms)
+  })
 });
 

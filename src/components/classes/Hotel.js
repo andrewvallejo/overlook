@@ -13,14 +13,14 @@ export class Hotel {
   generateRooms(rooms) {
     rooms.forEach(room => {
       this.rooms.push(new Room(room))
-    })
+    }) 
   }
   generateBookings(bookings) {
     bookings.forEach(booking => {
       this.bookings.push(new Booking(booking))
     })
   }
-  fetchCurrentDate(date) {
+  parseDate(date) {
     let dd = date.getDate()
     let mm = date.getMonth() + 1
     const yyyy = date.getFullYear()
@@ -31,10 +31,10 @@ export class Hotel {
   selectDate(date) {
     if (new Date(date).valueOf() < new Date().valueOf()) {
       const today = new Date()
-      this.fetchCurrentDate(today)
+      this.parseDate(today)
     } else {
       const futureDate = new Date(date)
-      this.fetchCurrentDate(futureDate)
+      this.parseDate(futureDate)
     } 
   }
 }

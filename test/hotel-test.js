@@ -57,5 +57,20 @@ describe.only('Booking', () => {
     expect(hotel.bookings).to.be.lengthOf(5)
     expect(hotel.bookings).to.be.deep.equal(hotelBookings)
   })
+  it('should be to update date property to current date', () => {
+    expect(hotel.date).to.be.equal('2000/12/25')
+    hotel.fetchCurrentDate()
+    expect(hotel.date).to.be.equal(today)
+  })
+  it('should be able to update the date to a future date', () => {
+    expect(hotel.date).to.be.equal('2000/12/25')
+    hotel.selectDate('2022/03/09')
+    expect(hotel.date).to.be.equal('2022/03/09')
+  })
+  it('should not be able to update the date to a before today', () => {
+    expect(hotel.date).to.be.equal('2000/12/25')
+    hotel.selectDate('2019/11/22')
+    expect(hotel.date).to.be.equal('2000/12/25')
+  })
 });
 

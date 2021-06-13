@@ -1,7 +1,7 @@
 // import Booking from './Booking'
-// import Room from './Room'
+import Room from './Room'
 
-class Hotel {
+export class Hotel {
   constructor() {
     this.date = '2000/12/25',
     this.rooms = [],
@@ -12,4 +12,4 @@ class Hotel {
   }
 }
 
-module.exports = Hotel
+

@@ -3,7 +3,7 @@ import { Hotel} from '../src/components/classes/Hotel';
 import {rooms, bookings, today} from './data/hotel-sample-data'
 
 describe.only('Booking', () => {
-  let bookedRooms1, bookedRooms2
+  let bookedRooms1, bookedRooms2, singleRooms
   let hotel, hotelRooms, hotelBookings
   let room1, room2, room3, room4, room5
   let booking1, booking2, booking3, booking4, booking5
@@ -20,6 +20,7 @@ describe.only('Booking', () => {
     booking5 = bookings.booking5
     bookedRooms1 = [booking2, booking3, booking4]
     bookedRooms2 = [booking1, booking5]
+    singleRooms = [booking4, booking5]
     hotelRooms = [room1, room2, room3, room4, room5]
     hotelBookings = [booking1, booking2, booking3, booking4, booking5]
     hotel = new Hotel()
@@ -120,6 +121,15 @@ describe.only('Booking', () => {
     expect(hotel.availability).to.be.equal(40)
     expect(hotel.bookings).to.be.lengthOf(3)
     expect(hotel.pendingBookings).to.be.deep.equal([])
+  })
+  it('should be able to filter rooms by its type', () => {
+    hotel.selectDate(['2099/10/31'])
+    hotel.findAvailableRooms()
+    expect(hotel.availableRooms).to.be.equal(hotelRooms)
+    hotel.filterRooms('single room')
+    expect(hotel.availableRooms).to.be.deep.equal(singleRooms)
+    hotel.filterRooms('suite')
+    expect(hotel.availableRooms).to.be.deep.equal([booking2])
   })
 });
 

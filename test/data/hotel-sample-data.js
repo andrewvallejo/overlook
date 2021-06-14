@@ -1,6 +1,6 @@
 import {roomsData, bookingsData} from './sample-data'
-import Room from '../../src/components/classes/Room'
-import Booking from '../../src/components/classes/Booking'
+import { Room } from '../../src/components/classes/Room'
+import { Booking } from '../../src/components/classes/Booking'
 
 let roomCount = 0
 const instantiatedRooms = roomsData.reduce((hotel, room) => {

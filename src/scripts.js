@@ -1,3 +1,15 @@
 import './css/styles.scss';
-import './images/turing-logo.png'
-console.log('This is the JavaScript entry file - your code begins here.');
+import {fetchHotelData} from './apiCalls'
+import { Guest } from './components/classes/Guest'
+
+let guestBook
+
+window.onload = () => {
+  fetchHotelData()
+    .then(promise => {
+      guestBook = promise[0].customers.map(user => new Guest(user))
+      guestBook.map(guest => {
+        guest.generateHotel(promise[1].rooms, promise[2].bookings)
+      })
+    })
+}

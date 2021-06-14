@@ -1,6 +1,5 @@
 import { Booking } from './Booking'
 import { Room } from './Room'
-import {roomsData, bookingsData} from '../../../test/data/sample-data'
 
 
 export class Hotel {
@@ -12,17 +11,17 @@ export class Hotel {
     this.pendingBookings = [],
     this.availability = 0
   }
-  generate() {
-    this.generateRooms()
-    this.generateBookings()
+  generate(hotelRooms, hotelBookings) {
+    this.generateRooms(hotelRooms)
+    this.generateBookings(hotelBookings)
   }
-  generateRooms() {
-    roomsData.forEach(room => {
+  generateRooms(hotelRooms) {
+    hotelRooms.forEach(room => {
       this.rooms.push(new Room(room))
     }) 
   }
-  generateBookings() {
-    bookingsData.forEach(booking => {
+  generateBookings(hotelBookings) {
+    hotelBookings.forEach(booking => {
       this.bookings.push(new Booking(booking))
     })
   }

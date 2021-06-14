@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Hotel} from '../src/components/classes/Hotel';
 import {rooms, bookings, today} from './data/hotel-sample-data'
 
-describe('Booking', () => {
+describe('Hotel', () => {
   let hotel, hotelRooms, hotelBookings, singleRooms, generateHotel
   let room1, room2, room3, room4, room5
   let booking1, booking2, booking3, booking4, booking5

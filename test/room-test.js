@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Room from '../src/components/classes/Room'
+import { Room } from '../src/components/classes/Room'
 import { roomsData } from './data/sample-data'
 
 describe('Room', () => {

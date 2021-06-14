@@ -45,7 +45,7 @@ roomsData =
 bookingsData = [ {
   "id": "5fwrgu4i7k55hl6sz",
   "userID": 9,
-  "date": "2022/09/22",
+  "date": "2022/09/05",
   "roomNumber": 1,
   "roomServiceCharges": []
 },

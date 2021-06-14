@@ -3,7 +3,7 @@ import { Hotel} from '../src/components/classes/Hotel';
 import {rooms, bookings, today} from './data/hotel-sample-data'
 
 describe.only('Booking', () => {
-  let hotel, hotelRooms, hotelBookings, singleRooms
+  let hotel, hotelRooms, hotelBookings, singleRooms, generateHotel
   let room1, room2, room3, room4, room5
   let booking1, booking2, booking3, booking4, booking5
   beforeEach(() => {
@@ -17,10 +17,15 @@ describe.only('Booking', () => {
     booking3 = bookings.booking3
     booking4 = bookings.booking4
     booking5 = bookings.booking5
-    singleRooms = [booking4, booking5]
+    singleRooms = [room4, room5]
     hotelRooms = [room1, room2, room3, room4, room5]
     hotelBookings = [booking1, booking2, booking3, booking4, booking5]
     hotel = new Hotel()
+    generateHotel = () => {
+      hotel.generateRooms(hotelRooms)
+      hotel.generateBookings(hotelBookings)
+    }
+
   })
   it('should be an instantation of Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel)
@@ -70,17 +75,15 @@ describe.only('Booking', () => {
     expect(hotel.date).to.be.equal(today)
   })
   it('should be be able show all available rooms for today', () => {
+    generateHotel()
     expect(hotel.availability).to.be.equal(0)
-    hotel.generateRooms(hotelRooms)
-    hotel.generateBookings(hotelBookings)
     hotel.selectDate(today)
     hotel.findAvailableRooms()
     expect(hotel.availableRooms).to.be.lengthOf(5)
   })
   it('should be able to show all available rooms for a future date', () => {
+    generateHotel()
     expect(hotel.availability).to.be.equal(0)
-    hotel.generateRooms(hotelRooms)
-    hotel.generateBookings(hotelBookings)
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
     expect(hotel.availableRooms).to.be.lengthOf(2)
@@ -93,6 +96,7 @@ describe.only('Booking', () => {
 
   })
   it.skip('should be able to show percentage of booked rooms on date', () => {
+    generateHotel()
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
     expect(hotel.availability).to.be.equal(40)
@@ -101,6 +105,7 @@ describe.only('Booking', () => {
     expect(hotel.availability).to.be.equal(60)
   })
   it.skip('should be able to approve of any booking', () => {
+    generateHotel()
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
     expect(hotel.availability).to.be.equal(40)
@@ -113,6 +118,7 @@ describe.only('Booking', () => {
     expect(hotel.pendingBookings).to.be.deep.equal([])
   })
   it.skip('should be able to deny any booking', () => {
+    generateHotel()
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
     expect(hotel.availability).to.be.equal(40)
@@ -124,16 +130,19 @@ describe.only('Booking', () => {
     expect(hotel.bookings).to.be.lengthOf(3)
     expect(hotel.pendingBookings).to.be.deep.equal([])
   })
-  it.skip('should be able to filter rooms by its type', () => {
+  it('should be able to filter rooms by its type', () => {
+    generateHotel()
     hotel.selectDate(['2099/10/31'])
     hotel.findAvailableRooms()
-    expect(hotel.availableRooms).to.be.equal(hotelRooms)
+    expect(hotel.availableRooms).to.be.lengthOf(5)
     hotel.filterRooms('single room')
-    expect(hotel.availableRooms).to.be.deep.equal(singleRooms)
+    expect(hotel.availableRooms).to.be.lengthOf(2)
+    hotel.findAvailableRooms()
     hotel.filterRooms('suite')
-    expect(hotel.availableRooms).to.be.deep.equal([booking2])
+    expect(hotel.availableRooms).to.be.lengthOf(1)
   })
   it.skip('should be able to show all rooms again', () => {
+    generateHotel()
     hotel.selectDate(['2099/10/31'])
     hotel.findAvailableRooms()
     hotel.filterRooms('single room')

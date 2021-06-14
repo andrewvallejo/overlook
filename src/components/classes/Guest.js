@@ -1,14 +1,16 @@
 import { User } from './User'
-import Hotel from './Hotel'
+import { Hotel } from './Hotel'
 
 export class Guest extends User {
   constructor(user) {
     super(user) 
     this.guestBookings = []
     this.valuation = 0
-    this.overLook;
+    this.overlook;
   }
   generateHotel() {
-    this.overLook = new Hotel()
+    this.overlook = new Hotel()
+    this.overlook.generate()
   }
+
 }

@@ -35,4 +35,8 @@ describe.only('Guest', () => {
   it('should have a default of 0 for total cost of guestBookings', () => {
     expect(guest1.valuation).to.be.deep.equal(0)
   })
+  it('should have a property with the instantation of Hotel', () => {
+    guest1.generateHotel()
+    expect(guest1.overlook).to.be.an.instanceOf(Hotel)
+  })
 })

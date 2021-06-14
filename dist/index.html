@@ -4,13 +4,66 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Overlook</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+  <header>
+    <h1>Overlook</h1>
+    <h2>Salutations, <span>Andrew</span></h2>
+    <button class="hidden">Back</button>
+  </header>
+  <main>
+    <section aria-label="Login Page" class='hidden'>
+      <h3>Login</h3>
+      <form aria-label="Login Form" action="">
+        <input type="text" name="login" value="" placeholder="Username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Login">
+      </form>
+    </section>
+    <section aria-label="Guest Homepage"></section>
+  </main>
+  <section aria-label="Portal">
+    <h4>What would you like to do Today?</h4>
+    <ul aria-label="List of pages guest can view">
+      <li><button aria-label="view available rooms">View</button> available rooms for today</li>
+      <li><button aria-label="view available rooms on date">View</button> available rooms for a
+        different date</li>
+      <li><button aria-label="view my bookings">View</button> my bookings</li>
+    </ul>
+  </section>
+  <section aria-label="Date Selector" class='hidden'>
+    <label for="available rooms"></label>
+    <input type="date" name="available rooms" id="dateSelector">
+  </section>
+  <section aria-label="Rooms available today">
+    <h4>Rooms available for today</h4>
+    <ul aria-label="List of all available rooms for today">
+      <li>
+        <p>Room number: <span>0</span></p>
+        <p>Room yype: <span>Single</span></p>
+        <p>Bidet: <span>Yes</span></p>
+        <p>Bed Size: <span>Twin</span></p>
+        <p>Number of beds: <span>1</span></p>
+        <p>Cost per night: $<span>12</span></p>
+      </li>
+    </ul>
+  </section>
+  <section aria-label="Rooms available on selected date" class='hidden'>
+    <h4>Rooms available for <span>12/25/2025</span></h4>
+    <ul aria-label="List of all available rooms for selected date">
+    </ul>
+  </section>
+  <section aria-label="All of your booked rooms and amount spent" class='hidden'>
+    <h4>My Bookings</h4>
+    <h5>Total Spent: $<span>0</span> </h5>
+    <ul aria-label="List of your booked rooms">
+    </ul>
+  </section>
+  <footer>
+    <p>©Copyright 2021 Overlook Hotel. All Rights Reserved.</p>
+    <p label="Hotel Address">1428 Elm Street Springwood, Ohio</p>
+  </footer>
   <script src="bundle.js"></script>
-
 </body>
 </html>

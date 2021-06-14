@@ -55,4 +55,7 @@ describe.only('Guest', () => {
     guest1.overlook.filterRooms('suite')
     expect(guest1.overlook.availableRooms).to.be.lengthOf(1)
   })
+  it('should be able to book a room', () => {
+
+  })
 })

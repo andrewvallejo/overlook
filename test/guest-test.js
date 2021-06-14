@@ -4,7 +4,7 @@ import { Hotel} from '../src/components/classes/Hotel';
 import { userData } from './data/sample-data'
 import {rooms, bookings, today} from './data/hotel-sample-data'
 
-describe.only('Guest', () => {
+describe('Guest', () => {
   let guest1
   let hotel, hotelRooms, hotelBookings, singleRooms, generate
   let room1, room2, room3, room4, room5
@@ -56,6 +56,11 @@ describe.only('Guest', () => {
     expect(guest1.overlook.availableRooms).to.be.lengthOf(1)
   })
   it('should be able to book a room', () => {
-
+    guest1.generateHotel()
+    guest1.overlook.selectDate(['2099/10/31'])
+    guest1.overlook.findAvailableRooms()
+    expect(guest1.overlook.availableRooms).to.be.lengthOf(5)
+    guest1.bookRoom(3)
+    expect(guest1.guestBookings).to.be.deep.equal([room3])
   })
 })

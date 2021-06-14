@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import User from '../src/components/classes/User'
-import { userData } from './sample-data'
+import { userData } from './data/sample-data'
 
 describe('User', () => {
   let guest1, guest2, guest3, guest4, guest5;

@@ -47,13 +47,11 @@ export class Hotel {
       return vacantRooms
     }, [])
   }
+  filterRooms(type) {
+    return this.availableRooms = this.availableRooms.filter(room => {
+      if (room.roomType === type) {
+        return room 
+      }
+    })
+  }
 }
-
-
-
-
-
-// (booking => {
-//   if (booking.date !== this.date) {
-//     return booking
-//   }

@@ -8,5 +8,7 @@ export class Guest extends User {
     this.valuation = 0
     this.overLook;
   }
-
+  generateHotel() {
+    this.overLook = new Hotel()
+  }
 }

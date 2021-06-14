@@ -3,7 +3,7 @@ import { Guest } from '../src/components/classes/Guest';
 import {rooms, bookings, today} from './data/hotel-sample-data'
 import { userData } from './data/sample-data'
 
-describe.only('Guest', () => {
+describe('Guest', () => {
   let guest1
   beforeEach(() => {
     guest1 = new Guest(userData[0])

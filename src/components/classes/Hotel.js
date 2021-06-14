@@ -7,7 +7,7 @@ export class Hotel {
     this.rooms = [],
     this.bookings = [],
     this.availableRooms = [],
-    this.pendingBookings = []
+    this.pendingBookings = [],
     this.availability = 0
   }
   generateRooms(rooms) {
@@ -35,7 +35,17 @@ export class Hotel {
     } else {
       const futureDate = new Date(date)
       this.parseDate(futureDate)
-    } 
+    }
+  }
+  findAvailableRooms() {
+    this.availableRooms = this.rooms.reduce((vacantRooms, room) => { 
+      this.bookings.forEach(booking => {
+        if (booking.date !== this.date && booking.roomNumber === room.number) {
+          vacantRooms.push(room)
+        }
+      })
+      return vacantRooms
+    }, [])
   }
 }
 
@@ -43,3 +53,7 @@ export class Hotel {
 
 
 
+// (booking => {
+//   if (booking.date !== this.date) {
+//     return booking
+//   }

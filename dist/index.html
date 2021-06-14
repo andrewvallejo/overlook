@@ -10,19 +10,56 @@
   <header>
     <h1>Overlook</h1>
     <h2>Salutations, <span>Andrew</span></h2>
-    <p>Total Spent: $<span>0</span></p>
+    <button class="hidden">Back</button>
   </header>
   <main>
     <section aria-label="Login Page" class='hidden'>
       <h3>Login</h3>
-      <form aria-label="Login Form" action=" ">
-      <input type="text" name="login" value="" placeholder="Username">
-         <input type="password" name="password" placeholder="password">
-         <input type="submit" value="Login">
+      <form aria-label="Login Form" action="">
+        <input type="text" name="login" value="" placeholder="Username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Login">
       </form>
     </section>
     <section aria-label="Guest Homepage"></section>
   </main>
+  <section aria-label="Portal">
+    <h4>What would you like to do Today?</h4>
+    <ul aria-label="List of pages guest can view">
+      <li><button aria-label="view available rooms">View</button> available rooms for today</li>
+      <li><button aria-label="view available rooms on date">View</button> available rooms for a
+        different date</li>
+      <li><button aria-label="view my bookings">View</button> my bookings</li>
+    </ul>
+  </section>
+  <section aria-label="Date Selector" class='hidden'>
+    <label for="available rooms"></label>
+    <input type="date" name="available rooms" id="dateSelector">
+  </section>
+  <section aria-label="Rooms available today">
+    <h4>Rooms available for today</h4>
+    <ul aria-label="List of all available rooms for today">
+      <li>
+        <p>Room number: <span>0</span></p>
+        <p>Room yype: <span>Single</span></p>
+        <p>Bidet: <span>Yes</span></p>
+        <p>Bed Size: <span>Twin</span></p>
+        <p>Number of beds: <span>1</span></p>
+        <p>Cost per night: $<span>12</span></p>
+      </li>
+    </ul>
+  </section>
+  <section aria-label="Rooms available on selected date" class='hidden'>
+    <h4>Rooms available for <span>12/25/2025</span></h4>
+    <ul aria-label="List of all available rooms for selected date">
+    </ul>
+  </section>
+  <section aria-label="All of your booked rooms and amount spent" class='hidden'>
+    <h4>My Bookings</h4>
+    <h5>Total Spent: $<span>0</span> </h5>
+    <ul aria-label="List of your booked rooms">
+    </ul>
+  </section>
   <footer>
     <p>©Copyright 2021 Overlook Hotel. All Rights Reserved.</p>
     <p label="Hotel Address">1428 Elm Street Springwood, Ohio</p>

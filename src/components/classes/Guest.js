@@ -20,9 +20,9 @@ export class Guest extends User {
     this.overlook.filerRooms(type)
   }
   bookRoom(number) {
-    this.guestBookings = this.findAvailableRooms.filter(room => {
+    this.guestBookings = this.overlook.availableRooms.filter(room => {
       if (room.number === number) {
-        return this.guestBookings
+        return room
       }
     })
   }

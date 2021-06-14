@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import Booking from '../src/components/classes/Booking';
+import { Booking } from '../src/components/classes/Booking';
 import { bookingsData } from './data/sample-data';
 
-describe('booking', () => {
+describe('Booking', () => {
   let booking1, booking2, booking3, booking4, booking5;
   beforeEach(() => {
     booking1 = new Booking(bookingsData[0]);
@@ -27,12 +27,12 @@ describe('booking', () => {
     expect(booking5.userID).to.be.equal(1)
   })
   it('should have the date with in the order of 2000/12/31', () => {
-    expect(booking2.date).to.be.equal('2020/01/24')
-    expect(booking5.date).to.be.equal('2020/02/05')
+    expect(booking2.date).to.be.equal('2043/01/01')
+    expect(booking5.date).to.be.equal('2022/09/05')
   })
   it('should have a room number', () => {
-    expect(booking3.roomNumber).to.be.equal(12)
-    expect(booking4.roomNumber).to.be.equal(7)
+    expect(booking3.roomNumber).to.be.equal(3)
+    expect(booking4.roomNumber).to.be.equal(4)
   })
   it('should have an empty array as a default for room service charges',
     () => {

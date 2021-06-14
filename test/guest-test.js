@@ -39,4 +39,9 @@ describe.only('Guest', () => {
     guest1.generateHotel()
     expect(guest1.overlook).to.be.an.instanceOf(Hotel)
   })
+  it('should be able to filter rooms by date', () => {
+    guest1.generateHotel()
+    guest1.filterRoomsByDate('2043/01/01')
+    expect(guest1.overlook.availableRooms).to.be.lengthOf(2)
+  })
 })

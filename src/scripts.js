@@ -1,11 +1,11 @@
 import './css/styles.scss';
-import {fetchData} from './apiCalls'
+import {fetchHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
 
 let guestBook
 
 window.onload = () => {
-  fetchData()
+  fetchHotelData()
     .then(promise => {
       guestBook = promise[0].customers.map(user => new Guest(user))
       guestBook.map(guest => {

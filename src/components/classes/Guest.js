@@ -12,5 +12,9 @@ export class Guest extends User {
     this.overlook = new Hotel()
     this.overlook.generate()
   }
+  filterRoomsByDate(date) {
+    this.overlook.selectDate(date)
+    this.overlook.findAvailableRooms()
+  }
 
 }

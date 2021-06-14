@@ -19,5 +19,11 @@ export class Guest extends User {
   filterRoomsByType(type) {
     this.overlook.filerRooms(type)
   }
-
+  bookRoom(number) {
+    this.guestBookings = this.findAvailableRooms.filter(room => {
+      if (room.number === number) {
+        return this.guestBookings
+      }
+    })
+  }
 }

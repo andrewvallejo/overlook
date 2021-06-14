@@ -1,6 +1,8 @@
 import { User } from './User'
 import { Hotel } from './Hotel'
 
+
+
 export class Guest extends User {
   constructor(user) {
     super(user) 
@@ -8,9 +10,9 @@ export class Guest extends User {
     this.valuation = 0
     this.overlook;
   }
-  generateHotel() {
+  generateHotel(rooms, bookings) {
     this.overlook = new Hotel()
-    this.overlook.generate()
+    this.overlook.generate(rooms, bookings)
   }
   filterRoomsByDate(date) {
     this.overlook.selectDate(date)

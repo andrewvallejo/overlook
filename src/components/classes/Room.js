@@ -1,4 +1,4 @@
-class Room {
+export class Room {
   constructor(room) {
     this.number = room.number
     this.roomType = room.roomType
@@ -8,5 +8,3 @@ class Room {
     this.costPerNight = room.costPerNight
   }
 }
-
-module.exports = Room

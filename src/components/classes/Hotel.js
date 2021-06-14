@@ -1,5 +1,5 @@
-import Booking from './Booking'
-import Room from './Room'
+import { Booking } from './Booking'
+import { Room } from './Room'
 
 export class Hotel {
   constructor() {

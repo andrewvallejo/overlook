@@ -18,16 +18,16 @@
       <form aria-label="Login Form" action="">
         <input type="text" name="login" value="" placeholder="Username">
         <input type="password" name="password" placeholder="password">
-        <input type="submit" value="Login">
+        <input id="btnLogin" type="submit" value="Login">
       </form>
     </section>
   <section aria-label="Portal">
     <h4>What would you like to do Today?</h4>
     <ul aria-label="List of pages guest can view">
-      <li><button aria-label="view available rooms">View</button> available rooms for today</li>
-      <li><button aria-label="view available rooms on date">View</button> available rooms for a
+      <li><button id='btnViewTodayRooms' aria-label="view available rooms">View</button> available rooms for today</li>
+      <li><button id='btnViewDateRooms' aria-label="view available rooms on date">View</button> available rooms for a
         different date</li>
-      <li><button aria-label="view my bookings">View</button> my bookings</li>
+      <li><button id='btnViewMyBookings' aria-label="view my bookings">View</button> my bookings</li>
     </ul>
   </section>
   <section aria-label="Date Selector" class='hidden'>

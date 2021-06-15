@@ -50,6 +50,10 @@ section {
   width: auto;
 }
 
+article {
+  padding: 2rem;
+}
+
 footer {
   @include flexbox(row);
   @include flex(center, space-around);

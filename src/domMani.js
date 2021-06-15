@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { today } from './components/utility/getToday'
 // query selectors
 const availableRoomsToday = document.querySelector('#availableRoomsToday');
@@ -10,18 +11,21 @@ export const retrieveBook = (guestBook) => {
   // renderTodaysRooms(guestBook)
   // renderRoomsByDate(guestBook)
   // renderRoomsByType(guestBook)
-  renderRoom(guestBook, 'Date', '2020/04/22')
+  renderRoom(guestBook, 'Date', '2020/01/31')
+  // renderRoom(guestBook, 'Type', 'single room')
 }
-
 
 const renderRoom = (guestBook, filter, query) => {
   availableRoomsToday.innerHTML = ''
   let guest = guestBook[0]
+
   let availableRooms = guest.overlook.availableRooms
-  filter === 'Date' ? guest.filterRoomsByDate(query) : 
-    guest.filterRoomsByType(query)
-  // !guest.overlook.pending ? availableRooms = guest.overlook.rooms : null
-  console.log(availableRooms)
+  let filteredRooms = guest.overlook.filteredByTypeRooms
+  console.log(filteredRooms)
+  filter === 'Date' ? guest.filterRoomsByDate(query) : guest.filterRoomsByType(query)
+  if (filteredRooms.length >= 1) {
+    availableRooms = filteredRooms
+  }
   availableRooms.forEach(room => {
     availableRoomsToday.innerHTML += `     
     <li aria-label="Room and their properties">

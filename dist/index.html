@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Overlook</h1>
-    <h2>Salutations, <span>Andrew</span></h2>
+    <h2>Salutations, <span>Andrew</span>!</h2>
     <button class="hidden">Back</button>
   </header>
   <main>
@@ -21,8 +21,6 @@
         <input type="submit" value="Login">
       </form>
     </section>
-    <section aria-label="Guest Homepage"></section>
-  </main>
   <section aria-label="Portal">
     <h4>What would you like to do Today?</h4>
     <ul aria-label="List of pages guest can view">
@@ -36,7 +34,7 @@
     <label for="available rooms"></label>
     <input type="date" name="available rooms" id="dateSelector">
   </section>
-  <section aria-label="Rooms available today">
+  <section aria-label="Rooms available today" class='hidden'>
     <h4>Rooms available for today</h4>
     <ul id="availableRoomsToday" aria-label="List of all available rooms for today">
 
@@ -53,6 +51,7 @@
     <ul aria-label="List of your booked rooms">
     </ul>
   </section>
+</main>
   <footer>
     <p>©Copyright 2021 Overlook Hotel. All Rights Reserved.</p>
     <p label="Hotel Address">1428 Elm Street Springwood, Ohio</p>

@@ -24,7 +24,7 @@ describe('Guest', () => {
     singleRooms = [room4, room5]
     hotelRooms = [room1, room2, room3, room4, room5]
     hotelBookings = [booking1, booking2, booking3, booking4, booking5]
-    guest1.generateHotel()
+    generate = () => guest1.generateHotel(hotelRooms, hotelBookings)
   })
   it('should be an instantation of a Guest', () => {
     expect(guest1).to.be.an.instanceOf(Guest)
@@ -36,16 +36,16 @@ describe('Guest', () => {
     expect(guest1.valuation).to.be.deep.equal(0)
   })
   it('should have a property with the instantation of Hotel', () => {
-    guest1.generateHotel()
+    generate()
     expect(guest1.overlook).to.be.an.instanceOf(Hotel)
   })
   it('should be able to filter rooms by date', () => {
-    guest1.generateHotel()
+    generate()
     guest1.filterRoomsByDate('2043/01/01')
     expect(guest1.overlook.availableRooms).to.be.lengthOf(2)
   })
   it('should be able to filter rooms by type', () => {
-    guest1.generateHotel()
+    generate()
     guest1.overlook.selectDate(['2099/10/31'])
     guest1.overlook.findAvailableRooms()
     expect(guest1.overlook.availableRooms).to.be.lengthOf(5)
@@ -56,7 +56,7 @@ describe('Guest', () => {
     expect(guest1.overlook.availableRooms).to.be.lengthOf(1)
   })
   it('should be able to book a room', () => {
-    guest1.generateHotel()
+    generate()
     guest1.overlook.selectDate(['2099/10/31'])
     guest1.overlook.findAvailableRooms()
     expect(guest1.overlook.availableRooms).to.be.lengthOf(5)

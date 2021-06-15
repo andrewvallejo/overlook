@@ -14,7 +14,7 @@ fetchHotelData()
   .then(promise => {
     guestBook = promise[0].customers.map(user => new Guest(user)) 
     allBookings = promise[2].bookings
-    const filteredBookings = filterBookingsByDate(allBookings, '2020/02/04')
+    const filteredBookings = filterBookingsByDate(allBookings, '2020/01/31')
     guestBook.map(guest => {
       return guest.generateHotel(promise[1].rooms, filteredBookings)
     })
@@ -28,4 +28,3 @@ const filterBookingsByDate = (bookings, date)  => {
     }
   })
 }
-  

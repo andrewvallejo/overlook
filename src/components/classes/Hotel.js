@@ -1,5 +1,6 @@
 import { Booking } from './Booking'
 import { Room } from './Room'
+
 export class Hotel {
   constructor() {
     this.date = '2000/12/25',

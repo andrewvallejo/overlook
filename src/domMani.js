@@ -5,6 +5,9 @@ import { hide, show } from './components/utility/hideShow'
 // query selectors
 const portal = document.querySelector('#portal')
 const availableRoomsView = document.querySelector('#availableRoomsView')
+const guestMenu = document.querySelector('#guestMenu')
+const viewCalendar = document.querySelector('#viewCalendar')
+const menuHeader = document.querySelector('#menuHeader')
 
 export const retrieveBook = (guestBook, selectedDate) => {
   console.log(selectedDate)
@@ -37,6 +40,12 @@ const renderRooms = (availableRooms) => {
     <p>Cost per night: $<span>${room.costPerNight.toFixed(2) }</span></p>
   </article>`
   }) 
+}
+
+export const showCalendar = () => {
+  menuHeader.innerHTML = `Select a Date`
+  hide(guestMenu)
+  show(viewCalendar)
 }
 
 const hideView = () => {

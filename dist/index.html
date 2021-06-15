@@ -21,7 +21,7 @@
         <input id="btnLogin" type="submit" value="Login">
       </form>
     </section>
-  <section aria-label="Portal">
+  <section id='portal' aria-label="Portal">
     <h4>What would you like to do Today?</h4>
     <ul aria-label="List of pages guest can view">
       <li><button id='btnViewTodayRooms' aria-label="view available rooms">View</button> available rooms for today</li>
@@ -34,12 +34,15 @@
     <label for="available rooms"></label>
     <input type="date" name="available rooms" id="dateSelector">
   </section>
-  <section aria-label="Rooms available today" class='hidden'>
-    <h4>Rooms available for today</h4>
-    <ul id="availableRoomsToday" aria-label="List of all available rooms for today">
 
-    </ul>
+  <section id="availableRoomsView" aria-label="Rooms available" class="room-view hidden">
+    <!-- <h4>Rooms available</h4> -->
+
+
   </section>
+
+
+
   <section aria-label="Rooms available on selected date" class='hidden'>
     <h4>Rooms available for <span>12/25/2025</span></h4>
     <ul aria-label="List of all available rooms for selected date">

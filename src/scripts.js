@@ -4,31 +4,43 @@ import { Guest } from './components/classes/Guest'
 import { retrieveBook } from './domMani'
 import { today } from './components/utility/getToday'
 
+// global varibles and exports
+export let guestBook, allBookings
+let selectedDate = []
+
+
 // querySelectors
 const btnLogin = document.querySelector('#btnLogin')
 const btnViewTodayRooms = document.querySelector('#btnViewTodayRooms')
 const btnViewDateRooms = document.querySelector('#btnViewDateRooms')
 const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
+const portal = document.querySelector('#portal')
 
 
+// event listeners
+btnViewTodayRooms.addEventListener('click', (event) => {
+  event.preventDefault();  
+  fetchToday()
+})
 
-export let guestBook, sendData, allBookings
 
-window.onload = () => {
-  fetchHotelData()
+function fetchToday() {
+  instantiateHotel(today)
 }
 
-fetchHotelData()
-  .then(promise => {
-    guestBook = promise[0].customers.map(user => new Guest(user)) 
-    allBookings = promise[2].bookings
-    const filteredBookings = filterBookingsByDate(allBookings, '2020/01/31')
-    guestBook.map(guest => {
-      return guest.generateHotel(promise[1].rooms, filteredBookings)
+function instantiateHotel(selectedDate) {
+  fetchHotelData(selectedDate)
+    .then(promise => {
+      guestBook = promise[0].customers.map(user => new Guest(user)) 
+      allBookings = promise[2].bookings
+      const filteredBookings = filterBookingsByDate(allBookings, selectedDate)
+      guestBook.map(guest => {
+        return guest.generateHotel(promise[1].rooms, filteredBookings)
+      })
+      retrieveBook(guestBook, selectedDate)
     })
-    retrieveBook(guestBook)
-  })
-  
+}
+
 const filterBookingsByDate = (bookings, date)  => {
   return bookings.filter(booking => {
     if (booking.date.includes(date)) {
@@ -36,3 +48,4 @@ const filterBookingsByDate = (bookings, date)  => {
     }
   })
 }
+

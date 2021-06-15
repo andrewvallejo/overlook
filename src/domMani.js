@@ -1,19 +1,27 @@
 /* eslint-disable max-len */
-import { today } from './components/utility/getToday'
+// import { today } from './components/utility/getToday'
 import { hide, show } from './components/utility/hideShow'
 
 // query selectors
+const home = document.querySelector('#home')
 const portal = document.querySelector('#portal')
 const availableRoomsView = document.querySelector('#availableRoomsView')
 const guestMenu = document.querySelector('#guestMenu')
 const viewCalendar = document.querySelector('#viewCalendar')
 const menuHeader = document.querySelector('#menuHeader')
 
+
+home.addEventListener('click', (event) => {
+  event.preventDefault();  
+  showView([portal, guestMenu])
+  hideView([availableRoomsView, viewCalendar])
+})
+
 export const retrieveBook = (guestBook, selectedDate) => {
   console.log(selectedDate)
   prerenderRoom(guestBook, 'Date', selectedDate)
-  hideView()
-  showView()
+  hideView(portal)
+  showView(availableRoomsView)
 }
 
 const prerenderRoom = (guestBook, filter, query) => {
@@ -48,10 +56,12 @@ export const showCalendar = () => {
   show(viewCalendar)
 }
 
-const hideView = () => {
-  hide(portal)
+
+
+const hideView = (component) => {
+  hide(component)
 }
 
-const showView = () => {
-  show(availableRoomsView)
+const showView = (component) => {
+  show(component)
 }

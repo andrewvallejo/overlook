@@ -20,13 +20,14 @@ const portal = document.querySelector('#portal')
 // event listeners
 btnViewTodayRooms.addEventListener('click', (event) => {
   event.preventDefault();  
-  fetchToday()
+  instantiateHotel(today)
 })
 
+btnViewDateRooms.addEventListener('click', (event) => {
+  event.preventDefault();  
+  instantiateHotel('2020/01/25')
+})
 
-function fetchToday() {
-  instantiateHotel(today)
-}
 
 function instantiateHotel(selectedDate) {
   fetchHotelData(selectedDate)

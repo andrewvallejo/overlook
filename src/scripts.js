@@ -33,6 +33,13 @@ btnChooseDate.addEventListener('click', (event) => {
   instantiateHotel(calDate)
 })
 
+btnViewMyBookings.addEventListener('click', (event) => {
+  event.preventDefault();  
+  instantiateHotel('myBookings')
+})
+
+// instantiation functions
+
 function instantiateHotel(selectedDate) {
   fetchHotelData(selectedDate)
     .then(promise => {
@@ -42,7 +49,7 @@ function instantiateHotel(selectedDate) {
       guestBook.map(guest => {
         return guest.generateHotel(promise[1].rooms, filteredBookings)
       })
-      retrieveBook(guestBook, selectedDate)
+      retrieveBook(guestBook, selectedDate, allBookings)
     })
 }
 

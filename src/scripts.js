@@ -1,15 +1,30 @@
 import './css/styles.scss';
 import {fetchHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
+import { retrieveBook } from './domMani'
+import { today } from './components/utility/getToday'
 
-let guestBook
+export let guestBook, sendData, allBookings
 
 window.onload = () => {
   fetchHotelData()
-    .then(promise => {
-      guestBook = promise[0].customers.map(user => new Guest(user))
-      guestBook.map(guest => {
-        guest.generateHotel(promise[1].rooms, promise[2].bookings)
-      })
+}
+
+fetchHotelData()
+  .then(promise => {
+    guestBook = promise[0].customers.map(user => new Guest(user)) 
+    allBookings = promise[2].bookings
+    const filteredBookings = filterBookingsByDate(allBookings, '2020/01/31')
+    guestBook.map(guest => {
+      return guest.generateHotel(promise[1].rooms, filteredBookings)
     })
+    retrieveBook(guestBook)
+  })
+  
+const filterBookingsByDate = (bookings, date)  => {
+  return bookings.filter(booking => {
+    if (booking.date.includes(date)) {
+      return booking
+    }
+  })
 }

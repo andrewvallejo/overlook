@@ -1,13 +1,13 @@
 import { Booking } from './Booking'
 import { Room } from './Room'
 
-
 export class Hotel {
   constructor() {
     this.date = '2000/12/25',
     this.rooms = [],
     this.bookings = [],
     this.availableRooms = [],
+    this.filteredByTypeRooms = []
     this.pendingBookings = [],
     this.availability = 0
   }
@@ -43,19 +43,23 @@ export class Hotel {
     }
   }
   findAvailableRooms() {
-    this.availableRooms = this.rooms.reduce((vacantRooms, room) => { 
+    return this.rooms.forEach(room => { 
       this.bookings.forEach(booking => {
         if (booking.date !== this.date && booking.roomNumber === room.number) {
-          vacantRooms.push(room)
+          room.isBooked = true
         }
       })
-      return vacantRooms
-    }, [])
+      if (!room.isBooked) {
+        this.availableRooms.push(room)
+      } else if (!this.availableRooms) {
+        this.availableRooms.push(room)
+      }
+    })
   }
   filterRooms(type) {
-    return this.availableRooms = this.availableRooms.filter(room => {
+    return this.availableRooms.forEach(room => {
       if (room.roomType === type) {
-        return room 
+        this.filteredByTypeRooms.push(room)
       }
     })
   }

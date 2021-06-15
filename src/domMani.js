@@ -10,7 +10,7 @@ const availableRoomsView = document.querySelector('#availableRoomsView')
 const guestMenu = document.querySelector('#guestMenu')
 const viewCalendar = document.querySelector('#viewCalendar')
 const menuHeader = document.querySelector('#menuHeader')
-
+const dynamicMsg = document.querySelector('#dynamicMsg')
 
 
 home.addEventListener('click', (event) => {
@@ -58,6 +58,7 @@ const prerenderRoom = (guestBook, filter, query) => {
     availableRooms = guestBookings
   }
   renderRooms(availableRooms)
+  renderMsg(filter, guest) 
 }
 
 const renderRooms = (availableRooms) => {
@@ -73,6 +74,13 @@ const renderRooms = (availableRooms) => {
   </article>`
   }) 
 }
+
+const renderMsg = (filter, guest) => {
+  if (filter === 'myBookings') {
+    dynamicMsg.innerHTML = `${guest.name.split(' ')[0]}'s expenditures: $${guest.valuation.toFixed(2)}`
+  }
+}
+ 
 
 export const showCalendar = () => {
   menuHeader.innerHTML = `Find Available Rooms`

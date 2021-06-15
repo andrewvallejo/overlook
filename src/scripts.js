@@ -1,7 +1,7 @@
 import './css/styles.scss';
 import {fetchHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { getbook } from './domMani'
+import { retrieveBook } from './domMani'
 
 export let guestBook, sendData
 
@@ -15,5 +15,7 @@ fetchHotelData()
     guestBook.map(guest => {
       return guest.generateHotel(promise[1].rooms, promise[2].bookings)
     })
-    getbook(guestBook)
+    retrieveBook(guestBook)
   })
+
+  

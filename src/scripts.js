@@ -1,12 +1,11 @@
 import './css/styles.scss';
 import {fetchHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { retrieveBook } from './domMani'
+import { retrieveBook, showCalendar} from './domMani'
 import { today } from './components/utility/getToday'
 
 // global varibles and exports
 export let guestBook, allBookings
-let selectedDate = []
 
 
 // querySelectors
@@ -14,8 +13,8 @@ const btnLogin = document.querySelector('#btnLogin')
 const btnViewTodayRooms = document.querySelector('#btnViewTodayRooms')
 const btnViewDateRooms = document.querySelector('#btnViewDateRooms')
 const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
-const portal = document.querySelector('#portal')
-
+const btnChooseDate = document.querySelector('#btnChooseDate')
+const dateSelector = document.querySelector('#dateSelector')
 
 // event listeners
 btnViewTodayRooms.addEventListener('click', (event) => {
@@ -25,9 +24,14 @@ btnViewTodayRooms.addEventListener('click', (event) => {
 
 btnViewDateRooms.addEventListener('click', (event) => {
   event.preventDefault();  
-  instantiateHotel('2020/01/25')
+  showCalendar()
 })
 
+btnChooseDate.addEventListener('click', (event) => {
+  event.preventDefault();  
+  const calDate = dateSelector.value.split('-').join('/')
+  instantiateHotel(calDate)
+})
 
 function instantiateHotel(selectedDate) {
   fetchHotelData(selectedDate)

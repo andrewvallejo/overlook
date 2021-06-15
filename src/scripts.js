@@ -4,6 +4,14 @@ import { Guest } from './components/classes/Guest'
 import { retrieveBook } from './domMani'
 import { today } from './components/utility/getToday'
 
+// querySelectors
+const btnLogin = document.querySelector('#btnLogin')
+const btnViewTodayRooms = document.querySelector('#btnViewTodayRooms')
+const btnViewDateRooms = document.querySelector('#btnViewDateRooms')
+const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
+
+
+
 export let guestBook, sendData, allBookings
 
 window.onload = () => {

@@ -1,0 +1,32 @@
+// Sort by type form
+
+input[type="radio"] {
+  display: none;
+  outline: none;
+}
+
+.type-form {
+  @include flexbox(column);
+  @include flex(center, center);
+  padding: 5rem 5rem;
+}
+
+.option {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0.4rem 0;
+  color: $color-quaternary;
+  transition: 1s;
+  &:hover,
+  &:focus {
+    color: $color-tertiary;
+  }
+}
+input[type="radio"]:checked + .option {
+  color: $color-tertiary;
+  border-bottom: 1px solid $color-tertiary;
+}
+
+.type-form {
+  font-size: 1.5rem;
+}

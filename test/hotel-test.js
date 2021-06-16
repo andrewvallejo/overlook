@@ -80,7 +80,18 @@ describe('Hotel', () => {
     hotel.selectDate(today)
     hotel.findAvailableRooms()
     expect(hotel.availableRooms).to.be.lengthOf(5)
-    
+  })
+  it('should be able to filter rooms by its type', () => {
+    generateHotel()
+    hotel.selectDate(['2099/10/31'])
+    hotel.findAvailableRooms()
+    expect(hotel.filteredByTypeRooms).to.be.lengthOf(0)
+    hotel.filterRooms('single room')
+    expect(hotel.filteredByTypeRooms).to.be.lengthOf(2)
+    hotel.selectDate(['2099/10/31'])
+    hotel.findAvailableRooms()
+    hotel.filterRooms('suite')
+    expect(hotel.filteredByTypeRooms).to.be.lengthOf(1)
   })
   it.skip('should be able to show all available rooms on a future date', () => {
     generateHotel()
@@ -133,19 +144,7 @@ describe('Hotel', () => {
     expect(hotel.bookings).to.be.lengthOf(3)
     expect(hotel.pendingBookings).to.be.deep.equal([])
   })
-  it('should be able to filter rooms by its type', () => {
-    generateHotel()
-    hotel.selectDate(['2099/10/31'])
-    hotel.findAvailableRooms()
-    expect(hotel.availableRooms).to.be.lengthOf(5)
-    hotel.filterRooms('single room')
-    expect(hotel.filteredByTypeRooms).to.be.lengthOf(2)
-    hotel.selectDate(['2099/10/31'])
-    hotel.findAvailableRooms()
-    hotel.filterRooms('suite')
-    console.log(hotel.filteredByTypeRooms)
-    expect(hotel.filteredByTypeRooms).to.be.lengthOf(1)
-  })
+
   it.skip('should be able to show all rooms again', () => {
     generateHotel()
     hotel.selectDate(['2099/10/31'])

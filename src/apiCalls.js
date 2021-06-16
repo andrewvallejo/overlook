@@ -10,3 +10,18 @@ export const fetchHotelData = () => {
   ])
 }
 
+export const postHotelData = (data) => {
+  console.log(data)
+  let body = {
+    'userID': data.userID,
+    'date': data.date,
+    'roomNumber': data.roomNumber
+  }
+  return fetch(`http://localhost:3001/api/v1/bookings`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+};

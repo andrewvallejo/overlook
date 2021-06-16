@@ -1,6 +1,4 @@
 /* eslint-disable max-len */
-// import { today } from './components/utility/getToday'
-
 import { hide, show } from './components/utility/hideShow'
 
 // query selectors
@@ -11,6 +9,7 @@ const guestMenu = document.querySelector('#guestMenu')
 const viewCalendar = document.querySelector('#viewCalendar')
 const menuHeader = document.querySelector('#menuHeader')
 const dynamicMsg = document.querySelector('#dynamicMsg')
+const bookingMsg = document.querySelector('#bookingMsg')
 
 
 home.addEventListener('click', (event) => {
@@ -37,7 +36,6 @@ const fetchGuestBookings = (guestBook, bookings) => {
         guest.addBookings(room)
       }
     })
- 
   })
 }
 
@@ -54,7 +52,6 @@ const prerenderRoom = (guestBook, filter, query) => {
   } else if (filter === 'myBookings') {
     availableRooms = guestBookings
   }
-console.log(availableRooms)
   renderRooms(availableRooms)
   renderMsg(filter, guest) 
 }
@@ -62,7 +59,7 @@ console.log(availableRooms)
 const renderRooms = (availableRooms) => {
   availableRooms.forEach(room => {
     availableRoomsView.innerHTML += `     
-    <article id="availableRoomsToday" aria-label="List of all available rooms for today" class="room-card">
+    <article id="${room.number}" tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
     <p>Room number: <span>${room.number}</span></p>
     <p>Room type: <span>${room.roomType}</span></p>
     <p>Bidet: <span>${room.bidet}</span></p>
@@ -79,11 +76,23 @@ const renderMsg = (filter, guest) => {
   }
 }
  
-
 export const showCalendar = () => {
   menuHeader.innerHTML = `Find Available Rooms`
   hide(guestMenu)
   show(viewCalendar)
 }
 
+export const bookedMessage = () => {
+  return setTimeout(() => {
+    removeRoom();
+    dynamicMsg.innerHTML = 'Booked!'
+    show([portal, guestMenu])
+    hide([bookingMsg])
+  }, 5000)
+}
+
+export const removeRoom = () => {
+  hide([availableRoomsView, viewCalendar])
+  show([bookingMsg])
+} 
 

@@ -79,8 +79,6 @@ describe('Hotel', () => {
     expect(hotel.availability).to.be.equal(0)
     hotel.selectDate(today)
     hotel.findAvailableRooms()
-      .log(hotel)
-
     expect(hotel.availableRooms).to.be.lengthOf(5)
     
   })
@@ -89,7 +87,6 @@ describe('Hotel', () => {
     expect(hotel.availability).to.be.equal(0)
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
-      .log(hotel)
     expect(hotel.availableRooms).to.be.lengthOf(2)
     hotel.selectDate('2022/09/05')
     hotel.findAvailableRooms()

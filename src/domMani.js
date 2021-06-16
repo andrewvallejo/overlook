@@ -37,6 +37,7 @@ const fetchGuestBookings = (guestBook, bookings) => {
   return bookings.forEach(booking => {
     return hotelRooms.forEach(room => {
       if (booking.userID === guest.id && booking.roomNumber === room.number) {
+        room.date = booking.date
         guest.addBookings(room)
       }
     })
@@ -49,20 +50,24 @@ const prerenderRoom = (guestBook, filter, query) => {
   let availableRooms = guest.overlook.availableRooms
   let filteredRooms = guest.overlook.filteredByTypeRooms
   let guestBookings = guest.guestBookings
-  filter === 'Date' ? guest.filterRoomsByDate(query) : guest.filterRoomsByType(query) 
+  filter === 'Date' ? (guest.filterRoomsByDate(query)) : guest.filterRoomsByType(query) 
   if (filteredRooms.length >= 1)  {
     availableRooms = filteredRooms
   } else if (filter === 'myBookings') {
     availableRooms = guestBookings
   }
-  renderRooms(availableRooms)
+  renderRooms(availableRooms, filter)
   renderMsg(filter, guest) 
 }
+//     ${(room.date && (`<p>You booked this room for:  <span>${room.date}</span></p>`)) || null}
 
-const renderRooms = (availableRooms) => {
+const renderRooms = (availableRooms, filter) => {
+  let roomDate 
   availableRooms.forEach(room => {
-    availableRoomsView.innerHTML += `     
+    filter === 'myBookings' ? roomDate = `${(room.date && (`<p>You booked this room for:  <span>${room.date}</span></p>`)) || ''}`  : roomDate = ''
+    availableRoomsView.innerHTML += `
     <article id="${room.number}" tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
+    ${roomDate}  
     <p>Room number: <span>${room.number}</span></p>
     <p>Room type: <span>${room.roomType}</span></p>
     <p>Bidet: <span>${room.bidet}</span></p>

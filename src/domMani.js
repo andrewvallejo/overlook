@@ -10,19 +10,23 @@ const viewCalendar = document.querySelector('#viewCalendar')
 const menuHeader = document.querySelector('#menuHeader')
 const dynamicMsg = document.querySelector('#dynamicMsg')
 const bookingMsg = document.querySelector('#bookingMsg')
-
+const loginPortal = document.querySelector('#loginPortal')
 
 home.addEventListener('click', (event) => {
   event.preventDefault();  
-  hide([availableRoomsView, viewCalendar])
-  show([portal, guestMenu])
+  resetHome()
 })
 
-
+export const resetHome = () => {
+  hide([availableRoomsView, viewCalendar, loginPortal])
+  show([portal, guestMenu])
+}
 
 export const retrieveBook = (guestBook, selectedDate, allBookings) => {
+  let filter = ''
+  selectedDate === 'myBookings' ? filter = 'myBookings' : filter = 'Date'
   fetchGuestBookings(guestBook, allBookings)
-  prerenderRoom(guestBook, 'Date', selectedDate)
+  prerenderRoom(guestBook, filter, selectedDate)
   hide(portal)
   show(availableRoomsView)
 }
@@ -72,6 +76,7 @@ const renderRooms = (availableRooms) => {
 
 const renderMsg = (filter, guest) => {
   if (filter === 'myBookings') {
+    console.log('hello')
     dynamicMsg.innerHTML = `${guest.name.split(' ')[0]}'s expenditures: $${guest.valuation.toFixed(2)}`
   }
 }

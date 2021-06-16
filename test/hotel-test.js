@@ -82,11 +82,13 @@ describe('Hotel', () => {
     expect(hotel.availableRooms).to.be.lengthOf(5)
     
   })
-  it('should be able to show all available rooms for a future date', () => {
+  it.skip('should be able to show all available rooms on a future date', () => {
     generateHotel()
     expect(hotel.availability).to.be.equal(0)
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
+    console.log(hotel.bookings)
+    console.log(hotel.availableRooms)
     expect(hotel.availableRooms).to.be.lengthOf(2)
     hotel.selectDate('2022/09/05')
     hotel.findAvailableRooms()
@@ -137,10 +139,12 @@ describe('Hotel', () => {
     hotel.findAvailableRooms()
     expect(hotel.availableRooms).to.be.lengthOf(5)
     hotel.filterRooms('single room')
-    expect(hotel.availableRooms).to.be.lengthOf(2)
+    expect(hotel.filteredByTypeRooms).to.be.lengthOf(2)
+    hotel.selectDate(['2099/10/31'])
     hotel.findAvailableRooms()
     hotel.filterRooms('suite')
-    expect(hotel.availableRooms).to.be.lengthOf(1)
+    console.log(hotel.filteredByTypeRooms)
+    expect(hotel.filteredByTypeRooms).to.be.lengthOf(1)
   })
   it.skip('should be able to show all rooms again', () => {
     generateHotel()

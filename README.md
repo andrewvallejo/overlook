@@ -101,6 +101,10 @@ Feel free to a test within our directory to see we didn't cut any corners here a
 npm run test
 ```
 
+## Lighthouse Report
+
+<img width="1430" alt="Lighthouse 100% Report" src="https://user-images.githubusercontent.com/17935770/122163410-6437d780-ce32-11eb-858f-0f6480bf2ca9.png">
+
 ## Created by Andrew Vallejo
 
 - My [Github](https://www.github.com/andrewvallejo)

@@ -2,11 +2,12 @@
 import './css/styles.scss';
 import {fetchHotelData, postHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { removeRoom, retrieveBook, showCalendar, bookedMessage, fetchGuestBookings } from './domMani'
+import { removeRoom, retrieveBook, showCalendar, bookedMessage, resetHome} from './domMani'
 import { today } from './components/utility/getToday'
 
+
 // global varibles and exports
-export let guestBook, allBookings
+export let guestBook, allBookings, currentGuest
 
 
 // querySelectors
@@ -17,8 +18,12 @@ const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
 const btnChooseDate = document.querySelector('#btnChooseDate')
 const dateSelector = document.querySelector('#dateSelector')
 const availableRooms = document.querySelector('#availableRoomsView')
+const username = document.querySelector('#username')
+const password = document.querySelector('#password')
 
 // event listeners
+window.addEventListener('load', instaniateGuestbook)
+
 btnViewTodayRooms.addEventListener('click', (event) => {
   event.preventDefault();  
   instantiateHotel(today)
@@ -45,8 +50,33 @@ availableRooms.addEventListener('click', (event) => {
   fetchBookingData(event)
 })
 
-// instantiation functions
+btnLogin.addEventListener('click', (event) => {
+  event.preventDefault();  
+  verifyLogin()
+})
 
+
+/// login functions 
+
+const verifyLogin = () => {
+  instaniateGuestbook()
+  let isUsernameValid = false
+  let isPasswordValid = false
+  console.log(guestBook[0])
+  guestBook.forEach(guest => {
+    if (guest.username === username.value && password.value === 'overlook2021') {
+      isPasswordValid = true
+      isUsernameValid = true
+    }
+    if (isUsernameValid && isPasswordValid) {
+      resetHome()
+    } else {
+      console.log('failed to login')
+    }
+  })
+}
+
+// instantiation functions
 function instantiateHotel(selectedDate) {
   fetchHotelData(selectedDate)
     .then(promise => {
@@ -63,6 +93,13 @@ function instantiateHotel(selectedDate) {
     })
 } 
 
+function instaniateGuestbook() {
+  fetchHotelData()
+    .then(promise => {
+      guestBook = promise[0].customers.map(user => new Guest(user)) 
+    })
+  return guestBook
+}
 
 const filterBookingsByDate = (bookings, date)  => {
   return bookings.filter(booking => {
@@ -73,7 +110,6 @@ const filterBookingsByDate = (bookings, date)  => {
 }
 
 // booking functions
-
 function fetchBookingData(event) {
   if (event.target.closest('article')) {
     let userID = guestBook[0].id

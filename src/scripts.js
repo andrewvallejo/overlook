@@ -2,7 +2,7 @@
 import './css/styles.scss';
 import {fetchHotelData, postHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { showAltView, retrieveBook, showCalendar, showTypeMenu, bookedMessage, resetHome, prerenderRoom} from './domMani'
+import { showAltView, showRoomView, retrieveBook, showCalendar, showTypeMenu, bookedMessage, resetHome, prerenderRoom} from './domMani'
 import { today } from './components/utility/getToday'
 
 // global varibles and exports
@@ -43,6 +43,9 @@ btnChooseDate.addEventListener('click', (event) => {
 btnChooseType.addEventListener('click', (event) => {
   event.preventDefault();  
   let type = detectType()
+  prerenderRoom(guestBook, 'Type', type)
+  prerenderRoom(guestBook, 'Type', type)
+  showRoomView()
 })
 
 btnViewMyBookings.addEventListener('click', (event) => {
@@ -62,7 +65,6 @@ btnLogin.addEventListener('click', (event) => {
 
 btnSortByType.addEventListener('click', (event) => {
   event.preventDefault()
-  prerenderRoom(guestBook, 'Type', 'suite')
   showAltView('Type')
   showTypeMenu()
 })
@@ -161,6 +163,6 @@ const detectType = () => {
     if (choice.checked) {
       type = choice.value
     }
-    return type
   })
+  return type
 }

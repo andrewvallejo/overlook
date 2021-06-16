@@ -21,8 +21,10 @@ home.addEventListener('click', (event) => {
 
 
 export const retrieveBook = (guestBook, selectedDate, allBookings) => {
+  let filter = ''
+  selectedDate === 'myBookings' ? filter = 'myBookings' : filter = 'Date'
   fetchGuestBookings(guestBook, allBookings)
-  prerenderRoom(guestBook, 'Date', selectedDate)
+  prerenderRoom(guestBook, filter, selectedDate)
   hide(portal)
   show(availableRoomsView)
 }
@@ -72,6 +74,7 @@ const renderRooms = (availableRooms) => {
 
 const renderMsg = (filter, guest) => {
   if (filter === 'myBookings') {
+    console.log('hello')
     dynamicMsg.innerHTML = `${guest.name.split(' ')[0]}'s expenditures: $${guest.valuation.toFixed(2)}`
   }
 }

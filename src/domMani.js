@@ -22,15 +22,14 @@ home.addEventListener('click', (event) => {
 
 
 export const retrieveBook = (guestBook, selectedDate, allBookings) => {
-  console.log(selectedDate)
   fetchGuestBookings(guestBook, allBookings)
-  prerenderRoom(guestBook, selectedDate, selectedDate)
+  prerenderRoom(guestBook, 'Date', selectedDate)
   hide(portal)
   show(availableRoomsView)
 }
 
 const fetchGuestBookings = (guestBook, bookings) => {
-  let guest = guestBook[0]
+  let guest = guestBook[0]  
   let hotelRooms = guest.overlook.rooms
   return bookings.forEach(booking => {
     return hotelRooms.forEach(room => {
@@ -45,18 +44,17 @@ const fetchGuestBookings = (guestBook, bookings) => {
 const prerenderRoom = (guestBook, filter, query) => {
   availableRoomsView.innerHTML = ''        
   let guest = guestBook[0]
-  console.log(guest.valuation)
   let availableRooms = guest.overlook.availableRooms
   let filteredRooms = guest.overlook.filteredByTypeRooms
   let guestBookings = guest.guestBookings
-  console.log(guestBookings)
   filter === 'Date' ? guest.filterRoomsByDate(query) : guest.filterRoomsByType(query) 
-  
+
   if (filteredRooms.length >= 1)  {
     availableRooms = filteredRooms
   } else if (filter === 'myBookings') {
     availableRooms = guestBookings
   }
+console.log(availableRooms)
   renderRooms(availableRooms)
   renderMsg(filter, guest) 
 }

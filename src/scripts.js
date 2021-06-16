@@ -5,10 +5,8 @@ import { Guest } from './components/classes/Guest'
 import { removeRoom, retrieveBook, showCalendar, bookedMessage, resetHome} from './domMani'
 import { today } from './components/utility/getToday'
 
-
 // global varibles and exports
 export let guestBook, allBookings, currentGuest
-
 
 // querySelectors
 const btnLogin = document.querySelector('#btnLogin')
@@ -62,7 +60,6 @@ const verifyLogin = () => {
   instaniateGuestbook()
   let isUsernameValid = false
   let isPasswordValid = false
-  console.log(guestBook[0])
   guestBook.forEach(guest => {
     if (guest.username === username.value && password.value === 'overlook2021') {
       isPasswordValid = true
@@ -139,7 +136,6 @@ const postBookingData = (postData) => {
       bookedMessage()
       return setTimeout(() => {
         removeRoom();
-      
       }, 1000)
     })
 } 

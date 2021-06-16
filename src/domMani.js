@@ -95,7 +95,6 @@ export const showCalendar = () => {
 }
 
 export const showTypeMenu = () => [
-  menuHeader.innerHTML = `Filter`
 ] 
 
 export const bookedMessage = () => {
@@ -110,9 +109,13 @@ export const bookedMessage = () => {
 export const showAltView = (filter) => {
   if (filter === 'Type') {
     altMsg.innerHTML = `search by room type`
-    
+    menuHeader.innerHTML = `Filter`
   }
   hide([availableRoomsView, viewCalendar])
   show([altView])
 } 
 
+export const showRoomView = () => {
+  hide(altView)
+  show(availableRoomsView)
+}

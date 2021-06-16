@@ -43,9 +43,10 @@ export class Hotel {
     }
   }
   findAvailableRooms() {
+    this.filteredByTypeRooms = []
     return this.rooms.forEach(room => { 
       this.bookings.forEach(booking => {
-        if (booking.date !== this.date && booking.roomNumber === room.number) {
+        if (booking.date === this.date && booking.roomNumber === room.number) {
           room.isBooked = true
         }
       })
@@ -58,7 +59,7 @@ export class Hotel {
   }
   filterRooms(type) {
     return this.availableRooms.forEach(room => {
-      if (room.roomType === type) {
+      if (room.roomType === type && !this.filteredByTypeRooms.includes(room)) {
         this.filteredByTypeRooms.push(room)
       }
     })

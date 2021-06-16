@@ -41,6 +41,7 @@ btnViewMyBookings.addEventListener('click', (event) => {
 })
 
 availableRooms.addEventListener('click', (event) => {
+  event.preventDefault();  
   fetchBookingData(event)
 })
 

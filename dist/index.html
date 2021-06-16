@@ -13,15 +13,15 @@
     <button class="hidden">Back</button>
   </header>
   <main>
-    <section aria-label="Login Page" class='hidden'>
+    <section id='loginPortal' aria-label="Login Page">
       <h3>Login</h3>
       <form aria-label="Login Form" action="">
-        <input type="text" name="login" value="" placeholder="Username">
-        <input type="password" name="password" placeholder="password">
+        <input id='username' type="text" name="login" value="" placeholder="Username">
+        <input id='password' type="password" name="password" placeholder="password">
         <input id="btnLogin" type="submit" value="Login">
       </form>
     </section>
-    <section id='portal' aria-label="Portal">
+    <section id='portal' aria-label="Portal" class='hidden'>
       <h4 id="menuHeader">What would you like to do Today?</h4>
       <ul id="guestMenu" aria-label="List of pages guest can view">
         <li><button id='btnViewTodayRooms' aria-label="view available rooms">View</button> available

@@ -24,13 +24,32 @@ ul {
 button {
   text-transform: none;
   font-family: $font-family;
+  font-weight: bolder;
   font-size: 1.6rem;
   border: none;
   background: none;
-  color: $color-transparent-dark;
+  color: $color-quaternary;
   cursor: pointer;
-  &:hover {
+  position: relative;
+  transition: 1s;
+  &:hover,
+  &:focus {
     color: $color-tertiary;
+  }
+  &:before {
+    content: "";
+    border-bottom: 4px solid $color-tertiary;
+    border-spacing: 0.2rem;
+    transition: 0.5s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+  }
+  &:hover:before {
+    width: 100%;
+    border-bottom: 4px solid $color-tertiary;
+    opacity: 1;
   }
 }
 

@@ -38,14 +38,17 @@ An application commissioned by the Overlook Hotel. The app is tailored around th
 
 ## Demo
 
-Insert gif or link to demo
+<img width="1440" alt="login page" src="https://user-images.githubusercontent.com/17935770/122151670-2e3c2880-ce1d-11eb-9bc5-d4b9d279d8d8.png">
+                                                                                                                                             
+<img width="1436" alt="home page" src="https://user-images.githubusercontent.com/17935770/122151570-077df200-ce1d-11eb-99e9-fdd0dba75998.png">
+                                                                                                                                             
 
 ## Installation
 
 Clone the revere repo and appreciate its journey to making you feel _venerated._
 
 ```zsh
-  git clone git@github.com:andrewvallejo/overlook.git
+git clone git@github.com:andrewvallejo/overlook.git
 ```
 
 The next part, my favorite part, `cd` into the directory and run
@@ -73,13 +76,13 @@ See how easy we made that for you? This is a hotel you can trust with earnest.
 To view the project for all its majesty, `CD` into the Overlooks directory and run
 
 ```zsh
-  npm start
+npm start
 ```
 
 On a different terminal, `CD` into the Overlook API directory and run
 
 ```zsh
-    npm start
+npm start
 ```
 
 Are you ready? Click on the link to see your new home for night, you deserve it
@@ -95,14 +98,10 @@ Still not satsified? Don't worry, we believe in transpency. We have all our basi
 Feel free to a test within our directory to see we didn't cut any corners here at the Overlook.
 
 ```zsh
-  npm run test
+npm run test
 ```
 
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-## Created by Andrew Vallejogi
+## Created by Andrew Vallejo
 
 - My [Github](https://www.github.com/andrewvallejo)
 - My [Linkdin](https://www.linkedin.com/in/andrewvallejo/)

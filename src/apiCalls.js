@@ -11,7 +11,6 @@ export const fetchHotelData = () => {
 }
 
 export const postHotelData = (data) => {
-  console.log(data)
   let body = {
     'userID': data.userID,
     'date': data.date,

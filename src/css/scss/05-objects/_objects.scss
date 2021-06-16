@@ -13,3 +13,9 @@
   padding: 0.2rem 0.2rem;
   background: $color-primary;
 }
+
+.overlook-info {
+  @include flexbox(row);
+  @include flex(space-around, space-around, wrap);
+  width: 100%;
+}

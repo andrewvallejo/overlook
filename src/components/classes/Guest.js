@@ -19,6 +19,10 @@ export class Guest extends User {
   filterRoomsByType(type) {
     this.overlook.filterRooms(type)
   }
+  addBookings(bookedRoom) {
+    this.guestBookings.push(bookedRoom)
+    this.valuation += bookedRoom.costPerNight
+  }
   bookRoom(number) {
     this.guestBookings = this.overlook.availableRooms.filter(room => {
       if (room.number === number) {

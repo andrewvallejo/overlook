@@ -1,0 +1,15 @@
+.room-view {
+  @include flexbox(row);
+  @include flex(space-around, space-around, wrap);
+  height: 100%;
+  overflow: scroll;
+}
+
+.room-card {
+  @include flexbox(column);
+  @include flex(space-between, center);
+  margin: 0.4rem 0.4rem;
+  border-radius: 5px;
+  padding: 0.2rem 0.2rem;
+  background: $color-primary;
+}

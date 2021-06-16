@@ -50,7 +50,6 @@ const prerenderRoom = (guestBook, filter, query) => {
   let filteredRooms = guest.overlook.filteredByTypeRooms
   let guestBookings = guest.guestBookings
   filter === 'Date' ? guest.filterRoomsByDate(query) : guest.filterRoomsByType(query) 
-
   if (filteredRooms.length >= 1)  {
     availableRooms = filteredRooms
   } else if (filter === 'myBookings') {
@@ -76,7 +75,6 @@ const renderRooms = (availableRooms) => {
 
 const renderMsg = (filter, guest) => {
   if (filter === 'myBookings') {
-    console.log('hello')
     dynamicMsg.innerHTML = `${guest.name.split(' ')[0]}'s expenditures: $${guest.valuation.toFixed(2)}`
   }
 }

@@ -9,18 +9,19 @@ import { today } from './components/utility/getToday'
 export let guestBook, allBookings, currentGuest
 
 // querySelectors
+const availableRooms = document.querySelector('#availableRoomsView')
 const btnLogin = document.querySelector('#btnLogin')
-const btnSortByType = document.querySelector('#btnSortByType')
-const btnViewTodayRooms = document.querySelector('#btnViewTodayRooms')
-const btnViewDateRooms = document.querySelector('#btnViewDateRooms')
-const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
 const btnChooseDate = document.querySelector('#btnChooseDate')
 const btnChooseType = document.querySelector('#btnChooseType')
+const btnSortByType = document.querySelector('#btnSortByType')
+const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
+const btnViewDateRooms = document.querySelector('#btnViewDateRooms')
+const btnViewTodayRooms = document.querySelector('#btnViewTodayRooms')
 const dateSelector = document.querySelector('#dateSelector')
-const availableRooms = document.querySelector('#availableRoomsView')
-const username = document.querySelector('#username')
 const password = document.querySelector('#password')
 const typeChoice = document.querySelectorAll('input[type="radio"]')
+const username = document.querySelector('#username')
+
 // event listeners
 window.addEventListener('load', instaniateGuestbook)
 

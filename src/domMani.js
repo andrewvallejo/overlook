@@ -108,8 +108,6 @@ export const showCalendar = () => {
   show(viewCalendar)
 }
 
-export const showTypeMenu = () => [
-] 
 
 export const bookedMessage = () => {
   return setTimeout(() => {

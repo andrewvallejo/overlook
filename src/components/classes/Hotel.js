@@ -34,7 +34,7 @@ export class Hotel {
     this.date = `${yyyy}/${mm}/${dd}`
   }
   selectDate(date) {
-    if (new Date(date).valueOf() < new Date().valueOf()) {
+    if (new Date(date).valueOf() === new Date().valueOf()) {
       const today = new Date()
       this.parseDate(today)
     } else {
@@ -58,6 +58,7 @@ export class Hotel {
     })
   }
   filterRooms(type) {
+    this.filteredByTypeRooms = []
     return this.availableRooms.forEach(room => {
       if (room.roomType === type && !this.filteredByTypeRooms.includes(room)) {
         this.filteredByTypeRooms.push(room)

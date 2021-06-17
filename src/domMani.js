@@ -34,14 +34,12 @@ export const retrieveBook = (guestBook, selectedDate, allBookings) => {
     fetchGuestBookings(guestBook, allBookings)
     prerenderRoom(guestBook, filter, selectedDate)
     hide(portal)
-    show(availableRoomsView)
   } else if (new Date(selectedDate).valueOf() <= new Date().valueOf()) {
     showAltView('noRooms')
   } else {
     fetchGuestBookings(guestBook, allBookings)
     prerenderRoom(guestBook, filter, selectedDate)
     hide(portal)
-    show(availableRoomsView)
   }
 }
 
@@ -60,6 +58,7 @@ const fetchGuestBookings = (guestBook, bookings) => {
 
 export const prerenderRoom = (guestBook, filter, query) => {
   availableRoomsView.innerHTML = ''        
+  show(availableRoomsView)
   let guest = guestBook[0]
   let availableRooms = guest.overlook.availableRooms
   let filteredRooms = guest.overlook.filteredByTypeRooms
@@ -69,6 +68,8 @@ export const prerenderRoom = (guestBook, filter, query) => {
     availableRooms = filteredRooms
   } else if (filter === 'myBookings') {
     availableRooms = guestBookings
+  } else if (!availableRooms.length) {
+    showAltView('noneAvailable')
   }
   renderRooms(availableRooms, filter)
   renderMsg(filter, guest) 
@@ -81,9 +82,9 @@ const renderRooms = (availableRooms, filter) => {
   show(btnSortByType) 
   availableRooms.forEach(room => {
     filter === 'myBookings' ? (roomDate = `${(room.date && (`<p>You booked this room for:  <span>${room.date}</span></p>`)) || ''}`, show(footerInfo), hide(btnSortByType))  : roomDate = ''
-    filter !== 'myBookings' ? (btnBook = `${`<button>Book now!</button>`}`)  : btnBook = ''
+    filter !== 'myBookings' ? (btnBook = `${`<button id="${room.number}">Book now!</button>`}`)  : btnBook = ''
     availableRoomsView.innerHTML += `
-    <article id="${room.number}" tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
+    <article tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
     ${roomDate}  
     <p>Room number: <span>${room.number}</span></p>
     <p>Room type: <span>${room.roomType}</span></p>
@@ -112,7 +113,6 @@ export const showCalendar = () => {
 export const bookedMessage = () => {
   return setTimeout(() => {
     showAltView();
-    dynamicMsg.innerHTML = 'Booked!'
     show([portal, guestMenu])
     hide([altView])
   }, 5000)
@@ -125,6 +125,14 @@ export const showAltView = (filter) => {
     hide([availableRoomsView, viewCalendar, portal])
   } else if (filter === 'noRooms') {
     altMsg.innerHTML = `Only future bookings are allowed. search for a future date`
+    show([altView])
+    hide([availableRoomsView, viewCalendar, portal, typeForm])
+    return setTimeout (() => {
+      show([portal, guestMenu])
+      hide([altView])
+    }, 5000)
+  } else if (filter === 'noneAvailable') {
+    altMsg.innerHTML = `We are so so so sorry, please try another date!`
     show([altView])
     hide([availableRoomsView, viewCalendar, portal, typeForm])
     return setTimeout (() => {

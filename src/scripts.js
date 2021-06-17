@@ -90,6 +90,15 @@ const verifyLogin = () => {
 }
 
 // instantiation functions
+
+function instaniateGuestbook() {
+  fetchHotelData()
+    .then(promise => {
+      guestBook = promise[0].customers.map(user => new Guest(user)) 
+    })
+  return guestBook
+}
+
 function instantiateHotel(selectedDate) {
   fetchHotelData(selectedDate)
     .then(promise => {
@@ -106,13 +115,6 @@ function instantiateHotel(selectedDate) {
     })
 } 
 
-function instaniateGuestbook() {
-  fetchHotelData()
-    .then(promise => {
-      guestBook = promise[0].customers.map(user => new Guest(user)) 
-    })
-  return guestBook
-}
 
 const filterBookingsByDate = (bookings, date)  => {
   return bookings.filter(booking => {
@@ -125,7 +127,6 @@ const filterBookingsByDate = (bookings, date)  => {
 // booking functions
 function fetchBookingData(event) {
   if (event.target.closest('article')) {
-    console.log(event)
     let userID = guestBook[0].id
     let date = guestBook[0].overlook.date
     let roomNumber = parseInt(event.target.closest('article').id)

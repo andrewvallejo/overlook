@@ -20,3 +20,14 @@
   justify-content: $justify;
   flex-wrap: $wrap;
 }
+
+@mixin phone {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (max-width: 1000px) {
+    @content;
+  }
+}

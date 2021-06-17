@@ -126,10 +126,10 @@ const filterBookingsByDate = (bookings, date)  => {
 
 // booking functions
 function fetchBookingData(event) {
-  if (event.target.closest('article')) {
+  if (event.target.closest('button')) {
     let userID = guestBook[0].id
     let date = guestBook[0].overlook.date
-    let roomNumber = parseInt(event.target.closest('article').id)
+    let roomNumber = parseInt(event.target.closest('button').id)
     const postData = {
       userID,
       date,

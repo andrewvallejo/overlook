@@ -89,6 +89,7 @@ const renderRooms = (availableRooms, filter) => {
     <p>Bed Size: <span>${room.bedSize}</span></p>
     <p>Number of beds: <span>${room.numBeds}</span></p>
     <p>Cost per night: $<span>${room.costPerNight.toFixed(2)}</span></p>
+    <button>Book now!</button>
   </article>`
   }) 
 }
@@ -120,7 +121,7 @@ export const bookedMessage = () => {
 export const showAltView = (filter) => {
   if (filter === 'Type') {
     altMsg.innerHTML = `search by room type`
-    show([typeForm])
+    show([altView, typeForm])
     hide([availableRoomsView, viewCalendar, portal])
   } else if (filter === 'noRooms') {
     altMsg.innerHTML = `Only future bookings are allowed. search for a future date`
@@ -130,11 +131,12 @@ export const showAltView = (filter) => {
       show([portal, guestMenu])
       hide([altView])
     }, 5000)
-  }
-  altMsg.innerHTML = 'Booking Approved! Enjoy your stay at the Overlook Hotel!'
-  hide([availableRoomsView, viewCalendar, typeForm])
-  show([altView])
-} 
+  } else {
+    altMsg.innerHTML = 'Booking Approved! Enjoy your stay at the Overlook Hotel!'
+    hide([availableRoomsView, viewCalendar, typeForm])
+    show([altView])
+  } 
+}
 
 export const showRoomView = () => {
   hide(altView)

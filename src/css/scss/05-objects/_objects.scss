@@ -2,6 +2,9 @@
   @include flexbox(row);
   @include flex(space-around, space-around, wrap);
   width: 100%;
+  @include tablet {
+    display: none;
+  }
 }
 
 .room-view {
@@ -9,6 +12,9 @@
   @include flex(space-around, space-around, wrap);
   height: 100%;
   overflow: scroll;
+  @include tablet {
+    padding: 2rem 0;
+  }
 }
 
 .room-card {
@@ -24,5 +30,16 @@
 .room-card {
   > p {
     background: $color-transparent-light;
+  }
+}
+
+.login-form {
+  @include tablet {
+    @include flexbox(column);
+    @include flex(space-between, center);
+    height: 10rem;
+  }
+  > input {
+    margin: 0.4rem 0;
   }
 }

@@ -66,7 +66,6 @@ btnLogin.addEventListener('click', (event) => {
 btnSortByType.addEventListener('click', (event) => {
   event.preventDefault()
   showAltView('Type')
-  showTypeMenu()
 })
 
 

@@ -76,10 +76,12 @@ export const prerenderRoom = (guestBook, filter, query) => {
 
 const renderRooms = (availableRooms, filter) => {
   let roomDate 
+  let btnBook 
   hide(footerInfo)
-  show(btnSortByType)
+  show(btnSortByType) 
   availableRooms.forEach(room => {
     filter === 'myBookings' ? (roomDate = `${(room.date && (`<p>You booked this room for:  <span>${room.date}</span></p>`)) || ''}`, show(footerInfo), hide(btnSortByType))  : roomDate = ''
+    filter !== 'myBookings' ? (btnBook = `${`<button>Book now!</button>`}`)  : btnBook = ''
     availableRoomsView.innerHTML += `
     <article id="${room.number}" tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
     ${roomDate}  
@@ -89,7 +91,7 @@ const renderRooms = (availableRooms, filter) => {
     <p>Bed Size: <span>${room.bedSize}</span></p>
     <p>Number of beds: <span>${room.numBeds}</span></p>
     <p>Cost per night: $<span>${room.costPerNight.toFixed(2)}</span></p>
-    <button>Book now!</button>
+    ${btnBook}
   </article>`
   }) 
 }

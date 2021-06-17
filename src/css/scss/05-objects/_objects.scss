@@ -19,4 +19,8 @@
   > p {
     background: $color-transparent-light;
   }
+.overlook-info {
+  @include flexbox(row);
+  @include flex(space-around, space-around, wrap);
+  width: 100%;
 }

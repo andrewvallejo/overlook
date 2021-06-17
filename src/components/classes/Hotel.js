@@ -34,18 +34,22 @@ export class Hotel {
     this.date = `${yyyy}/${mm}/${dd}`
   }
   selectDate(date) {
-    if (new Date(date).valueOf() < new Date().valueOf()) {
+    if (new Date(date).valueOf() === new Date().valueOf()) {
       const today = new Date()
       this.parseDate(today)
-    } else {
+    } else if (new Date(date).valueOf() > new Date().valueOf()) {
       const futureDate = new Date(date)
       this.parseDate(futureDate)
+    } else {
+      const today = new Date()
+      this.parseDate(today)
     }
   }
   findAvailableRooms() {
+    this.filteredByTypeRooms = []
     return this.rooms.forEach(room => { 
       this.bookings.forEach(booking => {
-        if (booking.date !== this.date && booking.roomNumber === room.number) {
+        if (booking.date === this.date && booking.roomNumber === room.number) {
           room.isBooked = true
         }
       })
@@ -57,8 +61,9 @@ export class Hotel {
     })
   }
   filterRooms(type) {
+    this.filteredByTypeRooms = []
     return this.availableRooms.forEach(room => {
-      if (room.roomType === type) {
+      if (room.roomType === type && !this.filteredByTypeRooms.includes(room)) {
         this.filteredByTypeRooms.push(room)
       }
     })

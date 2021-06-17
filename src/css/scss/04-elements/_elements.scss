@@ -61,10 +61,10 @@ section {
   font-size: 1.5rem;
   width: auto;
   @include tablet {
-  }
-  width: 90%;
-  > h4 {
-    text-align: center;
+    width: 80%;
+    > h4 {
+      text-align: center;
+    }
   }
 }
 

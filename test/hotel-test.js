@@ -98,8 +98,6 @@ describe('Hotel', () => {
     expect(hotel.availability).to.be.equal(0)
     hotel.selectDate('2043/01/01')
     hotel.findAvailableRooms()
-    console.log(hotel.bookings)
-    console.log(hotel.availableRooms)
     expect(hotel.availableRooms).to.be.lengthOf(2)
     hotel.selectDate('2022/09/05')
     hotel.findAvailableRooms()

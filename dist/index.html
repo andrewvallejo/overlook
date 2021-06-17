@@ -12,15 +12,15 @@
     <h2 id="dynamicMsg">Salutations, <span>Andrew</span>!</h2>
   </header>
   <main>
-    <section id='loginPortal' aria-label="Login Page">
+    <section id='loginPortal' aria-label="Login Page" class='hidden'>
       <h3>Login</h3>
       <form aria-label="Login Form" action="" >
-        <input id='username' type="text" name="login" value="" placeholder="Username">
+        <input id='username' type="text" name="login"  placeholder="Username">
         <input id='password' type="password" name="password" placeholder="password">
         <input id="btnLogin" type="submit" value="Login">
       </form>
     </section>
-    <section id='portal' aria-label="Portal" class='hidden'>
+    <section id='portal' aria-label="Portal" >
       <h4 id="menuHeader">What would you like to do Today?</h4>
       <ul id="guestMenu" aria-label="List of pages guest can view">
         <li><button id='btnViewTodayRooms' aria-label="view available rooms">View</button> available
@@ -37,17 +37,40 @@
         </form>
       </article>
     </section>
-    <section id='bookingMsg' aria-label="booking approved" class='hidden'>
-      <h5>Approved!</h5>
+    <section id='altView' aria-label="booking approved" class='alt-view hidden'>
+      <h5 id='altMsg' >Approved!</h5>
+
+
+      <form id='typeForm'aria-label="List of room type to filter by" class='type-form'>
+        
+      <input type="radio" id='singleRoom' name="type" value="single room">
+      <label for="singleRoom"  class="option">Single Room</label>
+
+      <input type="radio" id='residentialSuite' name="type" value="residential suite">
+      <label for="residentialSuite" class="option">Residential Suite</label>
+
+      <input type="radio" id='juniorSuite' name="type" value="junior suite">
+      <label for="juniorSuite" class="option">Junior Suite</label>
+
+      <input type="radio" id='suite' name="type" value="suite">
+      <label for="suite" class="option">Suite</label>
+
+      <input id="btnChooseType" type="submit">
+
+      </form>
+
+
+
 </section>
     <section id="availableRoomsView" aria-label="Rooms available" class="room-view hidden">
     </section>
   </main>
   <footer>
-    <div tabindex="0" role="document" aria-label="Copyright information and Hotel Directions">
+    <div id="footerInfo" tabindex="0" role="document" aria-label="Copyright information and Hotel Directions" class="overlook-info">
     <p>©Copyright 2021 Overlook Hotel. All Rights Reserved.</p>
     <p label="Hotel Address">1428 Elm Street Springwood, Ohio</p>
     </div>
+    <button id='btnSortByType' aria-label="Sort rooms by room type" class='hidden'>Sort by room type</button>
   </footer>
   <script src="bundle.js"></script>
 </body>

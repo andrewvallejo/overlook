@@ -2,11 +2,11 @@ import { expect } from 'chai';
 import { Guest } from '../src/components/classes/Guest';
 import { Hotel} from '../src/components/classes/Hotel';
 import { userData } from './data/sample-data'
-import {rooms, bookings, today} from './data/hotel-sample-data'
+import {rooms, bookings} from './data/hotel-sample-data'
 
 describe('Guest', () => {
   let guest1
-  let hotel, hotelRooms, hotelBookings, singleRooms, generate
+  let hotelRooms, hotelBookings, generate
   let room1, room2, room3, room4, room5
   let booking1, booking2, booking3, booking4, booking5
   beforeEach(() => {
@@ -21,7 +21,6 @@ describe('Guest', () => {
     booking3 = bookings.booking3
     booking4 = bookings.booking4
     booking5 = bookings.booking5
-    singleRooms = [room4, room5]
     hotelRooms = [room1, room2, room3, room4, room5]
     hotelBookings = [booking1, booking2, booking3, booking4, booking5]
     generate = () => guest1.generateHotel(hotelRooms, hotelBookings)

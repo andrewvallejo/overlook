@@ -2,7 +2,7 @@
 import './css/styles.scss';
 import {fetchHotelData, postHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { removeRoom, retrieveBook, showCalendar, bookedMessage, resetHome} from './domMani'
+import { showAltView, showRoomView, retrieveBook, showCalendar, showTypeMenu, bookedMessage, resetHome, prerenderRoom} from './domMani'
 import { today } from './components/utility/getToday'
 
 // global varibles and exports
@@ -10,15 +10,17 @@ export let guestBook, allBookings, currentGuest
 
 // querySelectors
 const btnLogin = document.querySelector('#btnLogin')
+const btnSortByType = document.querySelector('#btnSortByType')
 const btnViewTodayRooms = document.querySelector('#btnViewTodayRooms')
 const btnViewDateRooms = document.querySelector('#btnViewDateRooms')
 const btnViewMyBookings = document.querySelector('#btnViewMyBookings')
 const btnChooseDate = document.querySelector('#btnChooseDate')
+const btnChooseType = document.querySelector('#btnChooseType')
 const dateSelector = document.querySelector('#dateSelector')
 const availableRooms = document.querySelector('#availableRoomsView')
 const username = document.querySelector('#username')
 const password = document.querySelector('#password')
-
+const typeChoice = document.querySelectorAll('input[type="radio"]')
 // event listeners
 window.addEventListener('load', instaniateGuestbook)
 
@@ -38,6 +40,14 @@ btnChooseDate.addEventListener('click', (event) => {
   instantiateHotel(calDate)
 })
 
+btnChooseType.addEventListener('click', (event) => {
+  event.preventDefault();  
+  let type = detectType()
+  prerenderRoom(guestBook, 'Type', type)
+  prerenderRoom(guestBook, 'Type', type)
+  showRoomView()
+})
+
 btnViewMyBookings.addEventListener('click', (event) => {
   event.preventDefault();  
   instantiateHotel('myBookings')
@@ -51,6 +61,12 @@ availableRooms.addEventListener('click', (event) => {
 btnLogin.addEventListener('click', (event) => {
   event.preventDefault();  
   verifyLogin()
+})
+
+btnSortByType.addEventListener('click', (event) => {
+  event.preventDefault()
+  showAltView('Type')
+  showTypeMenu()
 })
 
 
@@ -74,6 +90,15 @@ const verifyLogin = () => {
 }
 
 // instantiation functions
+
+function instaniateGuestbook() {
+  fetchHotelData()
+    .then(promise => {
+      guestBook = promise[0].customers.map(user => new Guest(user)) 
+    })
+  return guestBook
+}
+
 function instantiateHotel(selectedDate) {
   fetchHotelData(selectedDate)
     .then(promise => {
@@ -90,13 +115,6 @@ function instantiateHotel(selectedDate) {
     })
 } 
 
-function instaniateGuestbook() {
-  fetchHotelData()
-    .then(promise => {
-      guestBook = promise[0].customers.map(user => new Guest(user)) 
-    })
-  return guestBook
-}
 
 const filterBookingsByDate = (bookings, date)  => {
   return bookings.filter(booking => {
@@ -135,8 +153,17 @@ const postBookingData = (postData) => {
       guestBook[0].addBooking
       bookedMessage()
       return setTimeout(() => {
-        removeRoom();
+        showAltView('Booking');
       }, 1000)
     })
 } 
 
+const detectType = () => {
+  let type;
+  typeChoice.forEach(choice => {
+    if (choice.checked) {
+      type = choice.value
+    }
+  })
+  return type
+}

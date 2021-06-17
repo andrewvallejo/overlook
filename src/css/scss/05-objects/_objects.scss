@@ -1,3 +1,9 @@
+.overlook-info {
+  @include flexbox(row);
+  @include flex(space-around, space-around, wrap);
+  width: 100%;
+}
+
 .room-view {
   @include flexbox(row);
   @include flex(space-around, space-around, wrap);
@@ -19,8 +25,4 @@
   > p {
     background: $color-transparent-light;
   }
-.overlook-info {
-  @include flexbox(row);
-  @include flex(space-around, space-around, wrap);
-  width: 100%;
 }

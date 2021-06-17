@@ -2,7 +2,7 @@
 import './css/styles.scss';
 import {fetchHotelData, postHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { showAltView, showRoomView, retrieveBook, showCalendar, bookedMessage, resetHome, prerenderRoom} from './domMani'
+import { showAltView, showRoomView, retrieveBook, showCalendar, bookedMessage, resetHome, prerenderRoom, loginErrorMsg} from './domMani'
 import { today } from './components/utility/getToday'
 
 // global varibles and exports
@@ -84,6 +84,7 @@ const verifyLogin = () => {
       resetHome()
     } else {
       console.log('failed to login')
+      loginErrorMsg(username)
     }
   })
 }

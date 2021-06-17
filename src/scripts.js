@@ -2,7 +2,7 @@
 import './css/styles.scss';
 import {fetchHotelData, postHotelData} from './apiCalls'
 import { Guest } from './components/classes/Guest'
-import { showAltView, showRoomView, retrieveBook, showCalendar, showTypeMenu, bookedMessage, resetHome, prerenderRoom} from './domMani'
+import { showAltView, showRoomView, retrieveBook, showCalendar, bookedMessage, resetHome, prerenderRoom} from './domMani'
 import { today } from './components/utility/getToday'
 
 // global varibles and exports

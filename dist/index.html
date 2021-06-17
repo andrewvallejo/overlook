@@ -12,15 +12,15 @@
     <h2 id="dynamicMsg">Salutations, <span>Andrew</span>!</h2>
   </header>
   <main>
-    <section id='loginPortal' aria-label="Login Page" class='hidden'>
+    <section id='loginPortal' aria-label="Login Page">
       <h3>Login</h3>
-      <form aria-label="Login Form" action="">
+      <form aria-label="Login Form" action="" class="login-form">
         <input id='username' type="text" name="login" placeholder="Username">
         <input id='password' type="password" name="password" placeholder="password">
         <input id="btnLogin" type="submit" value="Login">
       </form>
     </section>
-    <section id='portal' aria-label="Portal">
+    <section id='portal' aria-label="Portal" class='hidden'>
       <h4 id="menuHeader">What would you like to do Today?</h4>
       <ul id="guestMenu" aria-label="List of pages guest can view">
         <li><button id='btnViewTodayRooms' aria-label="view available rooms">View</button> available
@@ -67,4 +67,4 @@
   </footer>
   <script src="bundle.js"></script>
 </body>
-</html>`
+</html>

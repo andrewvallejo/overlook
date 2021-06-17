@@ -3,19 +3,19 @@ import { hide, show } from './components/utility/hideShow'
 import { today } from './components/utility/getToday'
 
 // query selectors
-const home = document.querySelector('#home')
-const btnSortByType = document.querySelector('#btnSortByType')
 const altMsg = document.querySelector('#altMsg')
-const footerInfo = document.querySelector('#footerInfo')
-const portal = document.querySelector('#portal')
-const availableRoomsView = document.querySelector('#availableRoomsView')
-const guestMenu = document.querySelector('#guestMenu')
-const viewCalendar = document.querySelector('#viewCalendar')
-const menuHeader = document.querySelector('#menuHeader')
-const dynamicMsg = document.querySelector('#dynamicMsg')
 const altView = document.querySelector('#altView')
+const availableRoomsView = document.querySelector('#availableRoomsView')
+const btnSortByType = document.querySelector('#btnSortByType')
+const dynamicMsg = document.querySelector('#dynamicMsg')
+const footerInfo = document.querySelector('#footerInfo')
+const guestMenu = document.querySelector('#guestMenu')
+const home = document.querySelector('#home')
 const loginPortal = document.querySelector('#loginPortal')
+const menuHeader = document.querySelector('#menuHeader')
+const portal = document.querySelector('#portal')
 const typeForm = document.querySelector('#typeForm')
+const viewCalendar = document.querySelector('#viewCalendar')
 
 home.addEventListener('click', (event) => {
   event.preventDefault();  
@@ -34,14 +34,12 @@ export const retrieveBook = (guestBook, selectedDate, allBookings) => {
     fetchGuestBookings(guestBook, allBookings)
     prerenderRoom(guestBook, filter, selectedDate)
     hide(portal)
-    show(availableRoomsView)
   } else if (new Date(selectedDate).valueOf() <= new Date().valueOf()) {
     showAltView('noRooms')
   } else {
     fetchGuestBookings(guestBook, allBookings)
     prerenderRoom(guestBook, filter, selectedDate)
     hide(portal)
-    show(availableRoomsView)
   }
 }
 
@@ -60,6 +58,7 @@ const fetchGuestBookings = (guestBook, bookings) => {
 
 export const prerenderRoom = (guestBook, filter, query) => {
   availableRoomsView.innerHTML = ''        
+  show(availableRoomsView)
   let guest = guestBook[0]
   let availableRooms = guest.overlook.availableRooms
   let filteredRooms = guest.overlook.filteredByTypeRooms
@@ -69,6 +68,8 @@ export const prerenderRoom = (guestBook, filter, query) => {
     availableRooms = filteredRooms
   } else if (filter === 'myBookings') {
     availableRooms = guestBookings
+  } else if (!availableRooms.length) {
+    showAltView('noneAvailable')
   }
   renderRooms(availableRooms, filter)
   renderMsg(filter, guest) 
@@ -76,12 +77,14 @@ export const prerenderRoom = (guestBook, filter, query) => {
 
 const renderRooms = (availableRooms, filter) => {
   let roomDate 
+  let btnBook 
   hide(footerInfo)
-  show(btnSortByType)
+  show(btnSortByType) 
   availableRooms.forEach(room => {
     filter === 'myBookings' ? (roomDate = `${(room.date && (`<p>You booked this room for:  <span>${room.date}</span></p>`)) || ''}`, show(footerInfo), hide(btnSortByType))  : roomDate = ''
+    filter !== 'myBookings' ? (btnBook = `${`<button id="${room.number}">Book now!</button>`}`)  : btnBook = ''
     availableRoomsView.innerHTML += `
-    <article id="${room.number}" tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
+    <article tabindex="0" aria-label="A ${room.roomType} with ${room.numBed} bed(s) that is $${room.costPerNight.toFixed(2)} per night" class="room-card">
     ${roomDate}  
     <p>Room number: <span>${room.number}</span></p>
     <p>Room type: <span>${room.roomType}</span></p>
@@ -89,7 +92,7 @@ const renderRooms = (availableRooms, filter) => {
     <p>Bed Size: <span>${room.bedSize}</span></p>
     <p>Number of beds: <span>${room.numBeds}</span></p>
     <p>Cost per night: $<span>${room.costPerNight.toFixed(2)}</span></p>
-    <button>Book now!</button>
+    ${btnBook}
   </article>`
   }) 
 }
@@ -106,13 +109,9 @@ export const showCalendar = () => {
   show(viewCalendar)
 }
 
-export const showTypeMenu = () => [
-] 
-
 export const bookedMessage = () => {
   return setTimeout(() => {
     showAltView();
-    dynamicMsg.innerHTML = 'Booked!'
     show([portal, guestMenu])
     hide([altView])
   }, 5000)
@@ -131,6 +130,14 @@ export const showAltView = (filter) => {
       show([portal, guestMenu])
       hide([altView])
     }, 5000)
+  } else if (filter === 'noneAvailable') {
+    altMsg.innerHTML = `We are so so so sorry, please try another date!`
+    show([altView])
+    hide([availableRoomsView, viewCalendar, portal, typeForm])
+    return setTimeout (() => {
+      show([portal, guestMenu])
+      hide([altView])
+    }, 5000)
   } else {
     altMsg.innerHTML = 'Booking Approved! Enjoy your stay at the Overlook Hotel!'
     hide([availableRoomsView, viewCalendar, typeForm])
@@ -141,4 +148,11 @@ export const showAltView = (filter) => {
 export const showRoomView = () => {
   hide(altView)
   show(availableRoomsView)
+}
+
+export const loginErrorMsg = (username) => {
+  username.placeholder = 'Incorrect! try again!'
+  return setTimeout (() => {
+    username.placeholder = 'Username'
+  }, 1500)
 }

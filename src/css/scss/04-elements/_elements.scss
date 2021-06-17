@@ -6,19 +6,27 @@ body {
 h1 {
   align-self: center;
   font-size: 5rem;
+  @include tablet {
+    font-size: 3rem;
+    align-self: unset;
+    margin-top: 0.3rem;
+  }
 }
 
 h2 {
   align-self: flex-end;
   margin-left: auto;
   font-size: 2rem;
+  @include tablet {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
 }
 
 h3,
 h4,
 h5,
-h6,
-h7 {
+h6 {
   font-size: 1.6rem;
   font-weight: bold;
 }
@@ -28,26 +36,36 @@ header {
   @include flex(flex-end, center);
   padding: 0.5rem 1rem;
   background: $color-primary;
-  height: 10%;
+  @include tablet {
+    @include flexbox(column);
+  }
 }
 
 main {
   @include flexbox(column);
   @include flex(center, center);
-  height: 85%;
+  // height: 80%;
   width: 100%;
   background: $color-secondary;
+  @include tablet {
+    // height: 95%;
+  }
 }
 
 section {
   @include flexbox(column);
   @include flex(center, center);
-  width: 40%;
   padding: 1rem;
   border-radius: 10px;
   background: $color-quinary;
   font-size: 1.5rem;
   width: auto;
+  @include tablet {
+    width: 80%;
+    > h4 {
+      text-align: center;
+    }
+  }
 }
 
 article {
@@ -57,7 +75,7 @@ article {
 footer {
   @include flexbox(row);
   @include flex(center, space-around);
-  height: 5%;
+  // height: 10%;
   background: $color-primary;
 }
 

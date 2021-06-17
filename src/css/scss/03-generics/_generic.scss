@@ -16,6 +16,15 @@ body {
   text-transform: capitalize;
 }
 
+main {
+  height: 80%;
+}
+
+header,
+footer {
+  height: 10%;
+}
+
 ol,
 ul {
   list-style: none;

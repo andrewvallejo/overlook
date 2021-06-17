@@ -3,19 +3,19 @@ import { hide, show } from './components/utility/hideShow'
 import { today } from './components/utility/getToday'
 
 // query selectors
-const home = document.querySelector('#home')
-const btnSortByType = document.querySelector('#btnSortByType')
 const altMsg = document.querySelector('#altMsg')
-const footerInfo = document.querySelector('#footerInfo')
-const portal = document.querySelector('#portal')
-const availableRoomsView = document.querySelector('#availableRoomsView')
-const guestMenu = document.querySelector('#guestMenu')
-const viewCalendar = document.querySelector('#viewCalendar')
-const menuHeader = document.querySelector('#menuHeader')
-const dynamicMsg = document.querySelector('#dynamicMsg')
 const altView = document.querySelector('#altView')
+const availableRoomsView = document.querySelector('#availableRoomsView')
+const btnSortByType = document.querySelector('#btnSortByType')
+const dynamicMsg = document.querySelector('#dynamicMsg')
+const footerInfo = document.querySelector('#footerInfo')
+const guestMenu = document.querySelector('#guestMenu')
+const home = document.querySelector('#home')
 const loginPortal = document.querySelector('#loginPortal')
+const menuHeader = document.querySelector('#menuHeader')
+const portal = document.querySelector('#portal')
 const typeForm = document.querySelector('#typeForm')
+const viewCalendar = document.querySelector('#viewCalendar')
 
 home.addEventListener('click', (event) => {
   event.preventDefault();  
@@ -108,7 +108,6 @@ export const showCalendar = () => {
   hide(guestMenu)
   show(viewCalendar)
 }
-
 
 export const bookedMessage = () => {
   return setTimeout(() => {

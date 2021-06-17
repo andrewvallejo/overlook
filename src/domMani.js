@@ -150,3 +150,10 @@ export const showRoomView = () => {
   hide(altView)
   show(availableRoomsView)
 }
+
+export const loginErrorMsg = (username) => {
+  username.placeholder = 'Incorrect! try again!'
+  return setTimeout (() => {
+    username.placeholder = 'Username'
+  }, 1500)
+}

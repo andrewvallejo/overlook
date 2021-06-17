@@ -11,5 +11,12 @@
   margin: 0.4rem 0.4rem;
   border-radius: 5px;
   padding: 0.2rem 0.2rem;
+  color: $color-transparent-dark;
   background: $color-primary;
+}
+
+.room-card {
+  > p {
+    background: $color-transparent-light;
+  }
 }

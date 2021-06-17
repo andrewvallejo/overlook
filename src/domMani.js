@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { hide, show } from './components/utility/hideShow'
+import { today } from './components/utility/getToday'
 
 // query selectors
 const home = document.querySelector('#home')
@@ -14,6 +15,7 @@ const menuHeader = document.querySelector('#menuHeader')
 const dynamicMsg = document.querySelector('#dynamicMsg')
 const altView = document.querySelector('#altView')
 const loginPortal = document.querySelector('#loginPortal')
+const typeForm = document.querySelector('#typeForm')
 
 home.addEventListener('click', (event) => {
   event.preventDefault();  
@@ -28,10 +30,19 @@ export const resetHome = () => {
 export const retrieveBook = (guestBook, selectedDate, allBookings) => {
   let filter = ''
   selectedDate === 'myBookings' ? filter = 'myBookings' : filter = 'Date'
-  fetchGuestBookings(guestBook, allBookings)
-  prerenderRoom(guestBook, filter, selectedDate)
-  hide(portal)
-  show(availableRoomsView)
+  if (selectedDate === today) {
+    fetchGuestBookings(guestBook, allBookings)
+    prerenderRoom(guestBook, filter, selectedDate)
+    hide(portal)
+    show(availableRoomsView)
+  } else if (new Date(selectedDate).valueOf() <= new Date().valueOf()) {
+    showAltView('noRooms')
+  } else {
+    fetchGuestBookings(guestBook, allBookings)
+    prerenderRoom(guestBook, filter, selectedDate)
+    hide(portal)
+    show(availableRoomsView)
+  }
 }
 
 const fetchGuestBookings = (guestBook, bookings) => {
@@ -109,9 +120,19 @@ export const bookedMessage = () => {
 export const showAltView = (filter) => {
   if (filter === 'Type') {
     altMsg.innerHTML = `search by room type`
-    menuHeader.innerHTML = `Filter`
+    show([typeForm])
+    hide([availableRoomsView, viewCalendar, portal])
+  } else if (filter === 'noRooms') {
+    altMsg.innerHTML = `Only future bookings are allowed. search for a future date`
+    show([altView])
+    hide([availableRoomsView, viewCalendar, portal, typeForm])
+    return setTimeout (() => {
+      show([portal, guestMenu])
+      hide([altView])
+    }, 5000)
   }
-  hide([availableRoomsView, viewCalendar])
+  altMsg.innerHTML = 'Booking Approved! Enjoy your stay at the Overlook Hotel!'
+  hide([availableRoomsView, viewCalendar, typeForm])
   show([altView])
 } 
 

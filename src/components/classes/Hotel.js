@@ -37,9 +37,12 @@ export class Hotel {
     if (new Date(date).valueOf() === new Date().valueOf()) {
       const today = new Date()
       this.parseDate(today)
-    } else {
+    } else if (new Date(date).valueOf() > new Date().valueOf()) {
       const futureDate = new Date(date)
       this.parseDate(futureDate)
+    } else {
+      const today = new Date()
+      this.parseDate(today)
     }
   }
   findAvailableRooms() {
